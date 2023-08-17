@@ -13,11 +13,6 @@
 
 ActiveRecord::Schema.define(version: 2023_08_17_060108) do
 
-
-ActiveRecord::Schema.define(version: 2023_08_17_055922) do
-
-ActiveRecord::Schema.define(version: 2023_08_17_060312) do
-
   create_table "addresses", force: :cascade do |t|
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -81,6 +76,7 @@ ActiveRecord::Schema.define(version: 2023_08_17_060312) do
     t.integer "quantity", null: false
     t.integer "making_status", default: 0, null: false
     t.integer "tax_price", null: false
+  end
 
   create_table "orders", force: :cascade do |t|
     t.integer "customer_id", null: false
