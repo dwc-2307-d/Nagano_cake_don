@@ -10,8 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-
-ActiveRecord::Schema.define(version: 2023_08_17_060108) do
+ActiveRecord::Schema.define(version: 2023_08_17_070159) do
 
   create_table "addresses", force: :cascade do |t|
     t.datetime "created_at", precision: 6, null: false
@@ -69,6 +68,16 @@ ActiveRecord::Schema.define(version: 2023_08_17_060108) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "items", force: :cascade do |t|
+    t.string "name"
+    t.text "description"
+    t.integer "price"
+    t.boolean "is_status"
+    t.integer "genre_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["genre_id"], name: "index_items_on_genre_id"
+  end
 
   create_table "order_items", force: :cascade do |t|
     t.integer "item_id", null: false
@@ -76,6 +85,8 @@ ActiveRecord::Schema.define(version: 2023_08_17_060108) do
     t.integer "quantity", null: false
     t.integer "making_status", default: 0, null: false
     t.integer "tax_price", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "orders", force: :cascade do |t|
@@ -87,7 +98,6 @@ ActiveRecord::Schema.define(version: 2023_08_17_060108) do
     t.string "postcode", null: false
     t.string "address", null: false
     t.integer "status", default: 0, null: false
-
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -105,4 +115,5 @@ ActiveRecord::Schema.define(version: 2023_08_17_060108) do
   end
 
   add_foreign_key "addresses", "customers"
+  add_foreign_key "items", "genres"
 end
