@@ -10,6 +10,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+
+ActiveRecord::Schema.define(version: 2023_08_17_055922) do
+
 ActiveRecord::Schema.define(version: 2023_08_17_060312) do
 
   create_table "addresses", force: :cascade do |t|
@@ -21,6 +24,7 @@ ActiveRecord::Schema.define(version: 2023_08_17_060312) do
     t.string "name", null: false
     t.index ["customer_id"], name: "index_addresses_on_customer_id"
   end
+
 
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -60,6 +64,14 @@ ActiveRecord::Schema.define(version: 2023_08_17_060312) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+
+  create_table "order_items", force: :cascade do |t|
+    t.integer "item_id", null: false
+    t.integer "order_id", null: false
+    t.integer "quantity", null: false
+    t.integer "making_status", default: 0, null: false
+    t.integer "tax_price", null: false
+
   create_table "orders", force: :cascade do |t|
     t.integer "customer_id", null: false
     t.integer "shipping_fee", null: false
@@ -69,6 +81,7 @@ ActiveRecord::Schema.define(version: 2023_08_17_060312) do
     t.string "postcode", null: false
     t.string "address", null: false
     t.integer "status", default: 0, null: false
+
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
