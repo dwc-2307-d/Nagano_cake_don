@@ -8,7 +8,9 @@ Rails.application.routes.draw do
 
 
   #public用のルーティング
-  scope module: :pubic do
+  scope module: :public do
+    root to: "homes#top"
+    get "about"=>"homes#about"
   end
 
 

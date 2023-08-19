@@ -1,0 +1,65 @@
+<header class="sticky-top" style="background-color: rgba(128, 128, 128, 0.6);">
+  <nav class="navbar navbar-expand-lg py-4 bg-secondary">
+    <div class="container">
+      <%= link_to root_path, data: { "turbolinks" => false }, class: "mx-4" do %>
+        <%= image_tag "logo1.png", alt: "LOGO", size: "90x80", class: "navbar-brand img-fluid" %>
+      <% end %>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNavDropdown">
+        <ul class="navbar-nav mx-5 d-flex ml-auto">
+          <% if customer_signed_in? %>
+            <!-- 顧客ログイン後のボタン -->
+            <li>
+              <%= link_to items_path, class: "btn btn-lg mx-3", style: "background-color: #FF9494; color: white;" do %>
+                ITEM
+              <% end %>
+            </li>
+            <li>
+              <div class="mypage-btn-container" id="mypageBtnContainer">
+                <button class="btn btn-lg mx-3" style="background-color:#FF9494; color: white;"><%= current_customer.full_name %>様</button>
+                <div class="mypage-dropdown" id="mypageDropdown">
+                  <ul>
+                    <li><%= link_to 'マイページ', customers_mypage_path %></li>
+                    <li><%= link_to '配送先', addresses_path %></li>
+                    <li><%= link_to '注文履歴', orders_path %></li>
+                    <li><%= link_to 'ログアウト', destroy_customer_session_path, method: :delete %></li>
+                  </ul>
+                </div>
+              </div>
+            </li>
+            <li>
+              <%= button_to cart_items_path, method: :get, class: "btn btn-lg mx-3", style: "background-color:#FF9494; color: white;" do %>
+                <i class="fas fa-shopping-cart"></i>
+              <% end %>
+            </li>
+          <% else %>
+            <!-- 顧客ログイン前のボタン -->
+            <li class="mr-3">
+              <%= link_to about_path, class: "btn btn-lg mx-3", style: "background-color: #FF9494; color: white;" do %>
+                ABOUT
+              <% end %>
+            </li>
+            <li class="mr-3">
+              <%= link_to items_path, class: "btn btn-lg mx-3", style: "background-color: #FF9494; color: white;" do %>
+                ITEM
+              <% end %>
+            </li>
+            <li>
+              <div class="login-btn-container" id="loginBtnContainer">
+                <button class="btn btn-lg mx-3" style="background-color:#FF9494; color: white;">LOGIN</button>
+                <div class="login-dropdown" id="loginDropdown">
+                  <ul>
+                    <li><%= link_to 'ログイン', new_customer_session_path %></li>
+                    <li><%= link_to '新規会員登録', new_customer_registration_path %></li>
+                  </ul>
+                </div>
+              </div>
+            </li>
+          <% end %>
+        </ul>
+      </div>
+    </div>
+  </nav>
+</header>
