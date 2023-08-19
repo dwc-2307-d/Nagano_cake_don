@@ -1,0 +1,6 @@
+<h4 class="ml-5 my-5"><span style="background-color: #d3d3d3; padding-left: 10px; padding-right: 10px;">ジャンル編集</span></h4>
+<%= form_with model: @genre, url: admin_genre_path,method: :patch do |f| %>
+  <td><%= f.label :ジャンル名, class: "mr-3 genreedit" %></td>
+  <td><%= f.text_field :name, class: "mr-2" %></td>
+  <td><%= f.submit "変更を保存", class: "btn", style: "background-color: #64CCC5; color: white; mx-3 mb-5" %></td>
+<% end %>
