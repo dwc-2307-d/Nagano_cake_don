@@ -1,5 +1,5 @@
 class Public::CustomersController < ApplicationController
-
+before_action :authenticate_customer!
   def new
     @customer = Customer.new
   end
