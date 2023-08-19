@@ -26,6 +26,7 @@ devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
   #public用のルーティング
   scope module: :public do
     root to: "homes#top"
+
     get "about"=>"homes#about"
     get "customers/mypage" => "customers#show"
     get "customers/information/edit" => "customers#edit"
@@ -33,12 +34,25 @@ devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
     get "customers/unsubscribe" => "customers#unsubscribe"
     patch "customers/withdraw" => "customers#withdraw"
 
+    get "about"=>"homes#about"
+
+    get "customers/about"=>"homes/about"
+
+  end
+
+
+
+
+
   end
 
 
 
   #管理者側のルーティング設定
   namespace :admin do
+    resources :items,except: [:destroy]
     resources :genres,except: [:new,:destroy]
+    
+    
   end
 end
