@@ -12,12 +12,21 @@ devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
   sessions: "admin/sessions"
 }
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> origin/feature/homes_layouts
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 
 
   #public用のルーティング
-  scope module: :pubic do
+  scope module: :public do
+    root to: "homes#top"
+<<<<<<< HEAD
+    get "about"=>"homes#about"
+=======
+    get "customers/about"=>"homes/about"
+>>>>>>> origin/feature/homes_layouts
   end
 
 
