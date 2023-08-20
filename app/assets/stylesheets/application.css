@@ -49,3 +49,10 @@
   background: #037582;
   padding: 12px;
 }
+
+
+footer {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+}
