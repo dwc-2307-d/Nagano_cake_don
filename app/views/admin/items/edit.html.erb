@@ -1,0 +1,50 @@
+<div class='container'>
+  <div class='row'>
+    <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
+      <table class="table table-borderless">
+        <h4 class="my-4">商品編集</h4>
+        <%= form_with model:[:admin, @item], local: true do |f| %>
+
+        <tr>
+          <td>商品画像</td>
+          <td><%= f.file_field :image, accept: "image/*" %></td>
+        </tr>
+        
+        <tr>
+          <td>商品名</td>
+          <td><%= f.text_field :name %></td>
+        </tr>
+        
+        <tr>
+          <td>商品説明</td>
+          <td><%= f.text_area :description, placeholder: "ここに説明文を記述します"  %></td>
+        </tr>
+        
+          <tr>
+          <td>ジャンル</td>
+          <td><%= f.select :genre_id, @genres,include_blank: "--選択して下さい" %></td>
+        </tr>
+        
+        <tr>
+          <td>税抜価格</td>
+          <td><%= f.text_field :price %>円</td>
+        </tr>
+      
+        <tr>
+          <td>販売ステータス</td>
+          <td><%= f.radio_button :is_status, true %>
+              <%= f.label :is_status, "販売中" %>
+              <%= f.radio_button :is_status, false %>
+              <%= f.label :is_status, "販売停止中" %>
+           </td>
+        </tr>
+        
+        <tr>
+          <td></td>
+          <td><%= f.submit '変更を保存', class: "btn", style: "background-color: #32cd32; color: white; mx-3" %></td>
+        </tr>
+        <% end %>
+      </table>
+    </div>
+  </div>
+</div>
