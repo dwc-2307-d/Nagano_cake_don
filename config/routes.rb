@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  
+
   # 顧客用
 # URL /customers/sign_in ...
 devise_for :customers,skip: [:passwords], controllers: {
@@ -44,7 +44,7 @@ devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
 
 
 
-  end
+
 
 
 
@@ -52,7 +52,7 @@ devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
   namespace :admin do
     resources :items,except: [:destroy]
     resources :genres,except: [:new,:destroy]
-    
-    
+
+
+   end
   end
-end
