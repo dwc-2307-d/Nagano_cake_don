@@ -57,3 +57,9 @@ devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
     resources :genres, except: [:new,:destroy]
   end
 end
+    resources :items,except: [:destroy]
+    resources :genres,except: [:new,:destroy]
+
+
+   end
+  end
