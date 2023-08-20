@@ -1,5 +1,5 @@
   <!--リンク先はダミー。適宜追加 -->
-
+<header　class="sticky-top">
 	<div id="mainNavigation">
       <nav role="navigation">
         <div class="py-3 text-center border-bottom">
@@ -18,15 +18,18 @@
               <a class="nav-link active" aria-current="page" href="#">Home</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">about</a>
+              <%= link_to 'About', about_path %>
+
             </li>
             <li class="nav-item">
               <a class="nav-link" href="#">items</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">log in</a>
+              <%= link_to ' Log in', new_customer_session_path %>
+
             </li>
           </ul>
         </div>
       </div>
     </div>
+  </header>
