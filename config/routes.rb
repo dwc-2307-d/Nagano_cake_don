@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
-
+  
+  namespace :public do
+    get 'genres/show'
+  end
+  
   # 顧客用
 # URL /customers/sign_in ...
 devise_for :customers,skip: [:passwords], controllers: {
@@ -27,7 +31,6 @@ devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
   scope module: :public do
     root to: "homes#top"
 
-
     get "about"=>"homes#about"
     get "customers/mypage" => "customers#show"
     get "customers/information/edit" => "customers#edit"
@@ -50,6 +53,10 @@ devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
 
   #管理者側のルーティング設定
   namespace :admin do
+    resources :items, except: [:destroy]
+    resources :genres, except: [:new,:destroy]
+  end
+end
     resources :items,except: [:destroy]
     resources :genres,except: [:new,:destroy]
 
