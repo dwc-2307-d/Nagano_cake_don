@@ -32,16 +32,14 @@ devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
     get "customers/information/edit" => "customers#edit"
     patch "customers/information" => "customers#update"
     # 退会確認画面
-    get  '/customers/check' => 'customers#check'
-  　# 論理削除用のルーティング
-    patch  '/customers/withdraw' => 'customers#withdraw'
-    get "customers/unsubscribe" => "customers#unsubscribe"
-    patch "customers/withdraw" => "customers#withdraw"
-    resources :items,only: [:index,:show] 
-    resources :genres, only: [:show]
-
-
+    get '/customers/check' => 'customers#check'
+    # 論理削除用のルーティング
+    patch '/customers/withdraw' => 'customers#withdraw'
     get "customers/about"=>"homes/about"
+
+
+    resources :items, only: [:index,:show]
+    resources :genres, only: [:show]
 
   end
 
