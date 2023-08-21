@@ -1,7 +1,43 @@
-<%= link_to ' Log in', new_customer_session_path %>
-<%= link_to ' sign up', new_customer_registration_path %>
-<%= link_to ' log out', destroy_customer_session_path, method: :delete %>
-<%= link_to ' mypage', customers_mypage_path %>
+<section class="top_page vh-100 d-flex allin-items-center">
+<div class="container">
+  <div class="row">
+      <div class="title col-md-8">
+          <h1>Naganocake</h1>
+          <h2>NaganoCakeは、ケーキ販売のECサイトです。<br>会員でない方も商品の閲覧は可能ですが、<br>購入には会員登録が必要になります。</h2>
+      </div>
+  </div>
+</div>
+</section>
 
-<%= link_to ' admin Log in', new_admin_session_path %>
-<%= link_to ' admin log out', destroy_admin_session_path, method: :delete %>
+<section class="topic bg-light" id="topic" style="max-height: 400px; overflow: hidden;">
+  <div class="container">
+      <div class="row">
+          <div class="col-sm-7 mx-auto text-center">
+              <h3>おすすめ商品</h3>
+          </div>
+      </div>
+      <div class="row mt-3">
+         <div class="col-md-4">
+          <div class="Item-card card-effect text-center">
+              <img src="<%= asset_path('') %>" alt="">
+              <div class="my-4">
+                  <h4>イチゴのショートケーキ</h4>
+                  <p>商品説明</p>
+                  <button class="btn btn-primary"> Shop</button>
+              </div>
+          </div>
+         </div>
+      </div>
+  </div>
+</section>
+
+
+<section class="about vh-100" id="about">
+    <div class="row">
+        <div class="about-info col-md-9">
+            <h2>About</h2>
+            <h3>Nagano Cakeは全国発送可能なケーキ屋さんです。<br>お子様からお年寄りの方までお召し上がりいただけるよう、様々なバリエーションを用意しております。<br>また、全国に発送可能ですので「いつ」でも「どこ」でもご注文いただけます。ぜひご注文ください。</h3>
+        </div>
+    </div>
+
+</section>
