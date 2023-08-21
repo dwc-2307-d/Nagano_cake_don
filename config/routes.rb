@@ -52,10 +52,10 @@ devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
 
   #管理者側のルーティング設定
   namespace :admin do
+    get "/" => "orders#index"
     resources :items, except: [:destroy]
     resources :genres, except: [:new,:destroy]
+    resources :customers, only: [:index, :show, :edit, :update]
+    resources :orders, only: [:index, :show, :update]
   end
-    resources :items,except: [:destroy]
-    resources :genres,except: [:new,:destroy]
-
-  end
+end
