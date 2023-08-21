@@ -33,8 +33,12 @@ devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
     patch "customers/information" => "customers#update"
     # 退会確認画面
     get  '/customers/check' => 'customers#check'
-   # 論理削除用のルーティング
+  　# 論理削除用のルーティング
     patch  '/customers/withdraw' => 'customers#withdraw'
+    get "customers/unsubscribe" => "customers#unsubscribe"
+    patch "customers/withdraw" => "customers#withdraw"
+    resources :items,only: [:index,:show] 
+    resources :genres, only: [:show]
 
 
     get "customers/about"=>"homes/about"
