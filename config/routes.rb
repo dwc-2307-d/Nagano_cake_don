@@ -36,6 +36,8 @@ devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
     patch "customers/information" => "customers#update"
     get "customers/unsubscribe" => "customers#unsubscribe"
     patch "customers/withdraw" => "customers#withdraw"
+    resources :items,only: [:index,:show] 
+    resources :genres, only: [:show]
 
 
     get "customers/about"=>"homes/about"
