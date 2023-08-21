@@ -1,0 +1,138 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ */
+
+@import "bootstrap";
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+JP&display=swap');
+:root {
+  --box-shadow: 0 8px 22px rgba(0,0,0,0.2)
+}
+
+* {
+  transition: all 0.4s ease;
+}
+
+body {
+  font-family: 'Noto Serif JP', serif;
+  color: white;
+}
+
+  /*header section */
+
+#mainNavigation a {
+  font-family: 'Cabin', sans-serif;
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.4);
+}
+
+.nav-item a {
+  color: #dfdfdf;
+}
+
+.nav-item a:hover {
+  color: #fff;
+}
+
+.nav-item {
+  min-width: 12vw;
+}
+
+#mainNavigation {
+  /*position: fixed; */
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 123;
+  padding-bottom: 120px;
+  /* 白グラデーションテンプレ */
+  /*background: linear-gradient(to bottom, rgba(255, 255, 255, 0.65) 0%, rgba(255, 255, 255, 0) 100%); */
+}
+
+#navbarNavDropdown.collapsing .navbar-nav,
+#navbarNavDropdown.show .navbar-nav {
+
+  padding: 12px;
+}
+
+
+footer {
+/*  position: fixed; */
+  bottom: 0;
+  width: 100%;
+}
+
+section {
+  padding-top: 60px;
+  padding-bottom: 60px;
+}
+
+/* top_page section */
+
+.top_page {
+  background-image: url("top_bg1.jpg");
+  background-position: center;
+  background-size: cover;
+  background-attachment: fixed;
+
+}
+
+.top_page .title {
+  transform: translateY(280px) translateX(520px);
+  font-family: 'Noto Serif JP', serif;
+  color: rgba(255, 255, 255, 0.9);
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
+}
+
+.top_page .h1 {
+  text-shadow: black ;
+  font-size: 3rem;
+}
+
+/*Topic section*/
+
+.topic {
+  font-family: 'Noto Serif JP', serif;
+}
+
+.topic img {
+  width: 100%;
+  height: 100%;
+}
+
+.card-effect {
+  box-shadow: var(--box-shadow);
+}
+
+/*about section*/
+
+.about {
+  font-family: 'Noto Serif JP', serif;
+  background-image: url("/assets/top_bg2.jpg");
+  background-position: center;
+  background-size: cover;
+  background-attachment: fixed;
+  position: relative;
+  color: rgba(255, 255, 255, 0.9);
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
+}
+
+.about-info {
+  transform: translateY(50%) translateX(10%);
+  padding-left: 20px;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
+}
+
+.about-info h3 {
+  font-size: 1.5rem;
+}
