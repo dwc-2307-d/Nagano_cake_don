@@ -19,6 +19,11 @@
         <div class="my-4">
           <i class="fab fa-instagram-square fa-2x fa-icon" style="color: #664a4a;"></i>
         </div>
+        <% if admin_signed_in? %>
+          <%= link_to 'Admin log out', destroy_admin_session_path, method: :delete, class: "footer-link" %>
+        <% else %>
+          <%= link_to 'Admin Log in', new_admin_session_path, class: "footer-link" %>
+        <% end %>
       </div>
     </div>
   </div>
