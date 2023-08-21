@@ -1,9 +1,12 @@
 class Public::HomesController < ApplicationController
-  
+
   def top
-  end 
-  
-  def about 
+    items = Item.all
+    @new_items = items.first(4)
+    @genres = Genre.all
   end
-  
+
+  def about
+  end
+
 end
