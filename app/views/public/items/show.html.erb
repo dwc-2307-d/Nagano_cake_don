@@ -1,0 +1,18 @@
+<div class="container">
+  <div class="row mt-5">
+    <div class="col-md-2">
+      <%= render "genre", genre: @genres %>
+    </div>
+    <div class="col-md-10 d-flex">
+      <div class="mr-5">
+        <%= image_tag @item.image, size: "300x200" %>
+      </div>
+      <div class="ml-5">
+        <h5 class="mb-4"><%= @item.name %></h5>
+        <h5 class="mb-3"><%= @item.description %></h5>
+        <h5 class="mb-3">¥<%= @item.with_tax_price.to_s(:delimited) %>(税込)</h5>
+        
+      </div>
+    </div>
+  </div>
+</div>
