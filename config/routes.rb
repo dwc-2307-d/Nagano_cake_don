@@ -20,10 +20,7 @@ devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 
- # 退会確認画面
- get  '/customers/check' => 'customers#check'
- # 論理削除用のルーティング
- patch  '/customers/withdraw' => 'customers#withdraw'
+
 
 
 
@@ -34,8 +31,10 @@ devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
     get "customers/mypage" => "customers#show"
     get "customers/information/edit" => "customers#edit"
     patch "customers/information" => "customers#update"
-    get "customers/unsubscribe" => "customers#unsubscribe"
-    patch "customers/withdraw" => "customers#withdraw"
+    # 退会確認画面
+    get  '/customers/check' => 'customers#check'
+   # 論理削除用のルーティング
+    patch  '/customers/withdraw' => 'customers#withdraw'
 
 
     get "customers/about"=>"homes/about"
