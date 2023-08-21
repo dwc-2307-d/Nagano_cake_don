@@ -1,0 +1,27 @@
+<table class="table table-borderless">
+  <%= form_with model: @address do |f| %>
+  <tr>
+    <th>郵便番号(ハイフンなし)</th>
+    <td><%= f.text_field :post_code %></td>
+    <td></td>
+  </tr>
+
+  <tr>
+    <th>住所</th>
+    <td><%= f.text_field :address %></td>
+    <td></td>
+  </tr>
+
+  <tr>
+    <th>宛名</th>
+    <td><%= f.text_field :name %></td>
+    <td>
+      <% if current_page?(addresses_path) %>
+        <%= f.submit "新規登録", class:"btn", style: "background-color: #9AC5F4; color: white;" %>
+      <% else %>
+        <%= f.submit "変更内容を保存", class:"btn", style: "background-color: #9AC5F4; color: white;" %>
+      <% end %>
+    </td>
+  </tr>
+  <% end %>
+</table>

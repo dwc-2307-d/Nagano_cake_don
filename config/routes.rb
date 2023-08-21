@@ -1,5 +1,10 @@
 Rails.application.routes.draw do
 
+  get 'addresses/index'
+  get 'addresses/edit'
+  get 'addresses/create'
+  get 'addresses/update'
+  get 'addresses/destroy'
   namespace :public do
     get 'genres/show'
   end
@@ -40,6 +45,8 @@ devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
 
     resources :items, only: [:index,:show]
     resources :genres, only: [:show]
+
+    resources :addresses, except: [:show]
 
   end
 
