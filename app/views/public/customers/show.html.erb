@@ -33,14 +33,12 @@
             </tbody>
         </table>
 
-        <div>
-          <h3>配送先</h3>
-
+        <div class="d-flex align-items-center">
+              <h3><b>配送先</b></h3>
+              <%= link_to "一覧を見る", addresses_path, class: "btn", style: "background-color: #9AC5F4; color: white; ml-3" %>
         </div>
-
-        <div>
-          <h3>注文履歴</h3>
-
+        <div class="d-flex align-items-center">
+            <h3><b>注文履歴</b></h3>
+              <%= link_to "一覧を見る", root_path, class: "btn", style: "background-color: #9AC5F4; color: white; ml-3" %>
         </div>
-
     </div>
