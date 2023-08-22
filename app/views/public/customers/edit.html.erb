@@ -2,8 +2,9 @@
   <div class="row">
     <div class="col">
       <h4 class="my-5">会員情報編集</h4>
+      <%= form_with model: @customer, url: customers_information_path, method: :patch do |f| %>
       <table class="table table-borderless">
-        <%= form_with model: @customer, url: customers_information_path, method: :patch do |f| %>
+
         <%= render 'layouts/error_messages', obj: f.object %>
         <tr>
           <td>氏名</td>
@@ -46,8 +47,9 @@
           <td><%= f.submit "編集内容を保存", class:"btn", style: "background-color: #64CCC5; color: white;" %></td>
           <td><%= link_to "退会する", customers_check_path, class:"btn btn-danger" %></td>
         </tr>
-        <% end %>
+
       </table>
+       <% end %>
     </div>
   </div>
 </div>
