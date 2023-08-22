@@ -3,7 +3,7 @@ class Item < ApplicationRecord
   has_one_attached :image
   belongs_to :genre
   has_many :cart_items
-  has_many :order_item
+  has_many :order_items
 
   #バリデーション
   validates :is_status, inclusion: { in: [true, false], message: "の選択は必須です" }
