@@ -29,26 +29,8 @@
             <li class="nav-item">
               <a class="nav-link" href="#">Log out</a>
             </li>
-          <% else %>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Home</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">About</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Items</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Sign up</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Log in</a>
-            </li>
-          <% end %>
-
           <!-- 管理者がログインしている場合のリンク -->
-          <% if admin_signed_in? %>
+          <% elsif admin_signed_in? %>
             <li class="nav-item">
               <a class="nav-link" href="#">Items</a>
             </li>
@@ -66,6 +48,23 @@
             </li>
             <li class="nav-item">
               <a class="nav-link" href="#">Log out</a>
+            </li>
+
+            <% else %>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">About</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Items</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Sign up</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Log in</a>
             </li>
           <% end %>
         </ul>
