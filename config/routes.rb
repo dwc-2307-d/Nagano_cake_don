@@ -36,6 +36,17 @@ devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
     get "customers/mypage" => "customers#show"
     get "customers/information/edit" => "customers#edit"
     patch "customers/information" => "customers#update"
+    get "customers/unsubscribe" => "customers#unsubscribe"
+    patch "customers/withdraw" => "customers#withdraw"
+    #カートアイテムのルーティング
+    resources :cart_items, only: [:index, :show, :destroy] do
+      member do
+        put 'update_quantity', to: 'cart_items#update_quantity'
+      end
+      delete :empty, on: :collection
+    end
+
+
     # 退会確認画面
     get '/customers/check' => 'customers#check'
     # 論理削除用のルーティング
