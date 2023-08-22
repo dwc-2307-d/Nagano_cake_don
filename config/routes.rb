@@ -39,7 +39,7 @@ devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
     get "customers/unsubscribe" => "customers#unsubscribe"
     patch "customers/withdraw" => "customers#withdraw"
     #カートアイテムのルーティング
-    resources :cart_items, only: [:index, :show, :destroy] do
+    resources :cart_items, only: [:index, :create, :destroy] do
       member do
         put 'update_quantity', to: 'cart_items#update_quantity'
       end
