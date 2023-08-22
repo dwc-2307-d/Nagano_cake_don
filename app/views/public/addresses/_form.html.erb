@@ -1,5 +1,7 @@
-<table class="table table-borderless">
+
   <%= form_with model: @address do |f| %>
+  <table class="table table-borderless">
+
   <tr>
     <th>郵便番号(ハイフンなし)</th>
     <td><%= f.text_field :post_code %></td>
@@ -23,5 +25,6 @@
       <% end %>
     </td>
   </tr>
-  <% end %>
-</table>
+
+  </table>
+<% end %>
