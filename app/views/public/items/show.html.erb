@@ -11,7 +11,12 @@
         <h5 class="mb-4"><%= @item.name %></h5>
         <h5 class="mb-3"><%= @item.description %></h5>
         <h5 class="mb-3">¥<%= @item.with_tax_price.to_s(:delimited) %>(税込)</h5>
-        
+        <%= form_with model: @cart_item do |f| %>
+          <%= f.select :count, 1..10, prompt: "個数選択" %>
+          <%= f.submit "カートに入れる", class: "btn mx-3", style: "background-color: #00ff00; color: white;" %>
+          <%= f.hidden_field :customer_id, value: current_customer.id %>
+          <%= f.hidden_field :item_id, value: @item.id %>
+        <% end %>
       </div>
     </div>
   </div>
