@@ -1,0 +1,23 @@
+<div class="container">
+  <div class="row mt-5">
+    <div class="col-md-10">
+      <h2 class="font-weight-normal mt-3"><%= @genre.name %> (全<%= @genre.items.count %>件)</h2>
+    </div>
+    <div class="row justify-content-center px-5">
+      <% @genre.items.each do |item| %>
+        <div class="col-md-3 one-post mb-4">
+          <%= link_to item_path(item) do %>
+            <p class="caption mx-2 mt-5 mb-3"><%= image_tag item.image, size: "250x300", style: "margin: 10px;" %></p>
+          <% end %>
+          <p class="caption mb-2"><%= item.name %></p>
+          <p class="caption mb-2">¥<%= item.price.to_s(:delimited) %></p>
+          <% if item.is_status == true %>
+            <p class="text-success mb-2">販売中</p>
+          <% else %>
+            <p class="text-danger mb-2">販売停止中</p>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
