@@ -1,22 +1,34 @@
-<div class="container">
-  <div class="row mt-5">
+<div class="container mt-5">
+  <div class="row">
     <div class="col-md-2">
       <%= render "genre", genre: @genres %>
     </div>
     <div class="col-md-10">
-      <h2 class="font-weight-normal mt-3">商品一覧(全)<%= @items_all.count %>件</h2>
-      <div class="row justify-content-center" style="height:60vh">
-        <% @items.each do |item| %>
-          <div class="col-md-3 one-post mb-4 mx-3">
-            <%= link_to item_path(item) do %>
-              <p class="caption mx-2 mt-5"><%= image_tag item.image, format: "jpeg", size: "250x200" %></p>
-            <% end %>
-            <p class="caption text-center"><%= item.name %></p>
-            <p class="caption text-center">¥<%= item.with_tax_price.to_s(:delimited) %></p>
+      <h2 class="font-weight-normal mt-3 mb-5">商品一覧(全<%= @items_all.count %>件)</h2>
+      <div class="row justify-content-center">
+        <% @items.first(6).each do |item| %>
+          <div class="col-md-4 mb-4">
+            <div class="card h-100">
+              <div class="card-img-wrapper" style="height: 250px; overflow: hidden;">
+                <%= link_to item_path(item) do %>
+                  <%= image_tag item.image, class: "card-img-top mx-auto", alt: item.name, style: "object-fit: cover; object-position: center; height: 100%; width: 100%;" if item.image.present? %>
+                <% end %>
+              </div>
+              <div class="card-body">
+                <h5 class="card-title text-center">
+                  <%= link_to item.name, item_path(item), class: "text-dark" %>
+                </h5>
+                <p class="card-text text-center">¥<%= item.with_tax_price.to_s(:delimited) %></p>
+              </div>
+            </div>
           </div>
         <% end %>
       </div>
     </div>
   </div>
-  <%= paginate @items %>
+  <div class="mt-4 text-center">
+    <%= paginate @items, :class => 'pagination' %>
+  </div>
+
 </div>
+
