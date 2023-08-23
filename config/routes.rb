@@ -42,7 +42,7 @@ devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
     #カートアイテムのルーティング
     resources :cart_items, only: [:index, :create, :destroy] do
       member do
-        put 'update_quantity', to: 'cart_items#update_quantity'
+        put 'update', to: 'cart_items#update_quantity'
       end
       collection do
         delete :destroy_all
