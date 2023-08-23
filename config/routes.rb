@@ -1,10 +1,5 @@
 Rails.application.routes.draw do
 
-  get 'addresses/index'
-  get 'addresses/edit'
-  get 'addresses/create'
-  get 'addresses/update'
-  get 'addresses/destroy'
   namespace :public do
     get 'genres/show'
   end
