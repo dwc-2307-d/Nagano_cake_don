@@ -7,7 +7,7 @@ class Public::CartItemsController < ApplicationController
 
 
   def create
-    item = item.find(params[:item_id])
+    item = item.find(params[:id])
     existing_cart_item = current_user.cart_items.find_by(item: item)
 
     if existing_cart_item
@@ -20,7 +20,7 @@ class Public::CartItemsController < ApplicationController
     redirect_to cart_item_path, notice: '商品を追加しました'
   end
 
-  def update_quantity
+  def update
     cart_item = CartItem.find(params[:id])
     new_quantity = params[:quantity].to_i
     cart_item.update(quantity: new_quantity)
@@ -32,7 +32,7 @@ class Public::CartItemsController < ApplicationController
     redirect_to request.referer, notice: '商品を削除しました'
   end
 
-  def empty_cart
+  def destroy_all
     current_customer.cart_items.destroy_all
     redirect_to cart_items_path, notice: 'カート内商品を全て削除しました'
   end

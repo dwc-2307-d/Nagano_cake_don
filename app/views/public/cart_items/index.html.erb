@@ -1,5 +1,5 @@
 <h1>ショッピングカート</h1>
-<%= link_to 'カートを空にする', empty_cart_items_path, method: :delete, data: { confirm: 'カートを空にしてもよろしいですか?' } %>
+<%= link_to 'カートを空にする', destroy_all_cart_items_path, method: :delete, data: { confirm: 'カートを空にしてもよろしいですか?' } %>
 <table>
   <thead>
     <tr>
@@ -14,8 +14,8 @@
       <tr>
         <td><%= cart_item.item.name %></td>
         <td>
-          <%= form_tag update_quantity_cart_item_path(cart_item), method: :put do %>
-            <%= number_field_tag 'quantity', cart_item.quantity, min: 1 %>
+          <%= form_tag update_cart_item_path(cart_item), method: :put do %>
+            <%= number_field_tag '個数', cart_item.quantity, min: 1 %>
             <%= submit_tag '更新' %>
           <% end %>
         </td>
