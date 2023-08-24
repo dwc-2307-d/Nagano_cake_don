@@ -16,7 +16,7 @@
               <h5 class="card-title text-center">
                 <%= link_to item.name, item_path(item), class: "text-dark" %>
               </h5>
-              <p class="card-text text-center">¥<%= item.price.to_s(:delimited) %></p>
+              <p class="card-text text-center">¥<%= item.price.to_s(:delimited) %>円</p>
               <% if item.is_status == true %>
                 <p class="text-success text-center mb-2">販売中</p>
               <% else %>

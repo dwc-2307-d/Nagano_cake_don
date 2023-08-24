@@ -7,7 +7,7 @@ class Public::CartItemsController < ApplicationController
 
 
   def create
-    item = item.find(params[:id])
+    item = Item.find(params[:item_id])
     existing_cart_item = current_user.cart_items.find_by(item: item)
 
     if existing_cart_item
