@@ -21,8 +21,13 @@
   transition: all 0.4s ease;
 }
 
+@font-face {
+    font-family: 'TekitouPoem';
+    src: font-url('TekitouPoem102.ttf') format('truetype');
+}
+
 body {
-  font-family: 'Noto Serif JP', serif;
+  font-family: 'Noto Serif', serif;
   color: white;
 }
 
@@ -138,6 +143,7 @@ section {
   font-size: 1.5rem;
 }
 
+
 .about_page {
   position: relative;
   height: 100vh;
@@ -185,4 +191,25 @@ section {
   font-family: 'Noto Serif JP', serif;
   font-size: 1.5rem;
   margin-top: 20px;
+
+.pagination {
+  justify-content: center;
+}
+.pagination>li>a {
+  border: none;
+  color: #696969;
+}
+
+.pagination>.active>a {
+  background: #93c9ff;
+  border-radius: 15px;
+}
+
+.pagination>li>a:hover {
+  border-radius: 15px;
+}
+
+.cake-font {
+    font-family: 'TekitouPoem', fallback-fonts, sans-serif;
+
 }

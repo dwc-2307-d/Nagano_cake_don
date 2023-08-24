@@ -35,15 +35,19 @@ devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
     patch "customers/withdraw" => "customers#withdraw"
 
     #カートアイテムのルーティング
-    resources :cart_items, only: [:index, :create, :destroy] do
-      member do
-        put 'update', to: 'cart_items#update_quantity'
-      end
+    resources :cart_items, only: [:index, :create, :update, :destroy] do
       collection do
         delete :destroy_all
       end
     end
 
+    #注文機能のルーティング
+    resources :orders, only: [:new, :create, :index, :show] do
+      collection do
+        post "confirm"
+        get "complete"
+      end
+    end
 
     # 退会確認画面
     get '/customers/check' => 'customers#check'
@@ -75,4 +79,6 @@ devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
     resources :customers, only: [:index, :show, :edit, :update]
     resources :orders, only: [:index, :show, :update]
   end
+
+    resources :order_items, only: [:update]
 end
