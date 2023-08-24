@@ -7,8 +7,13 @@ class Admin::GenresController < ApplicationController
 
   def create
     @genre = Genre.new(genre_params)
-    @genre.save
-    redirect_to admin_genres_path
+    if @genre.save
+      redirect_to admin_genres_path
+    else
+      @genres = Genre.all
+      flash.now[:alert] = @genre.errors.full_messages.join(",")
+      render :index
+    end
   end
 
   def edit
@@ -17,8 +22,12 @@ class Admin::GenresController < ApplicationController
 
   def update
     @genre=Genre.find(params[:id])
-    @genre.update(genre_params)
-    redirect_to admin_genres_path
+    if @genre.update(genre_params)
+      redirect_to admin_genres_path
+    else
+      flash.now[:alert] = @genre.errors.full_messages.join(",")
+      render :edit
+    end
   end
 
 private

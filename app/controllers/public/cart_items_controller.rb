@@ -8,8 +8,10 @@ class Public::CartItemsController < ApplicationController
 
 
   def create
+
     item = Item.find(params[:cart_item][:item_id])
     existing_cart_item = current_customer.cart_items.find_by(item: item)
+    
 
     if existing_cart_item
       existing_cart_item.increment!(:quantity)
