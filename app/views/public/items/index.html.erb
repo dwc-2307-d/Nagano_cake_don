@@ -1,10 +1,10 @@
-<div class="container mt-5">
+<div class="container cake-font mt-5">
   <div class="row">
     <div class="col-md-2">
       <%= render "genre", genre: @genres %>
     </div>
     <div class="col-md-10">
-      <h2 class="font-weight-normal mt-3 mb-5">商品一覧(全<%= @items_all.count %>件)</h2>
+      <h2 class="font-weight-normal mt-3 mb-5 cake-font">商品一覧(全<%= @items_all.count %>件)</h2>
       <div class="row justify-content-center">
         <% @items.first(6).each do |item| %>
           <div class="col-md-4 mb-4">
@@ -15,7 +15,7 @@
                 <% end %>
               </div>
               <div class="card-body">
-                <h5 class="card-title text-center">
+                <h5 class="card-title text-center cake-font">
                   <%= link_to item.name, item_path(item), class: "text-dark" %>
                 </h5>
                 <p class="card-text text-center">¥<%= item.with_tax_price.to_s(:delimited) %></p>
@@ -29,6 +29,5 @@
   <div class="mt-4 text-center">
     <%= paginate @items, :class => 'pagination' %>
   </div>
-
 </div>
 
