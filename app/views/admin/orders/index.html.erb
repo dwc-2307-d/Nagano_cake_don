@@ -1,3 +1,25 @@
-注文履歴
-
-<%= link_to '会員一覧', admin_customers_path %>
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <h4 class="my-5 admin-order-list">注文履歴一覧</h4>
+      <table class="table">
+        <thead>
+        <tr>
+          <td>購入日時</td>
+          <td>購入者</td>
+          <td>注文個数</td>
+          <td>注文ステータス</td>
+        </tr>
+          <% @orders.each do |order| %>
+            <tr>
+                <td>
+                  <%= link_to  admin_order_path(order.id) do %>
+                    <%=  l order.created_at %>
+                  <% end %>
+                </td>
+                <td><%= order.customer.full_name %></td>
+                <td><%= order.order_item.sum(:number) %></td>
+                <td><%= order.order_status_i18n %></td>
+            </tr>
+          <% end %>
+      </table>
