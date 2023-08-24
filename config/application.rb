@@ -20,6 +20,9 @@ module NaganoCakeDontyan
     config.i18n.load_path += Dir[Rails.root.join('config/locales/status_ja.yml').to_s]
 
 
+
+    config.time_zone = 'Asia/Tokyo'
+
     # Configuration for the application, engines, and railties goes here.
     #
     # These settings can be overridden in specific environments using the files
