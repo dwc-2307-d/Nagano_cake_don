@@ -37,7 +37,7 @@
     const errorMessage = document.getElementById('error-message');
 
     addToCartButton.addEventListener('click', function(e) {
-      if (parseInt(selectElement.value) === 0) {
+      if (selectElement.value === "") {
         e.preventDefault();
         errorMessage.classList.remove('d-none');
       } else {
@@ -46,3 +46,4 @@
     });
   });
 </script>
+
