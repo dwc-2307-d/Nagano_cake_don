@@ -37,10 +37,8 @@ class Public::OrdersController < ApplicationController
   end
 
   def show
-    def show
-      @order_details = OrderDetail.where(order_id: params[:id])
+      @order_items = OrderItem.where(order_id: params[:id])
       @order = Order.find(params[:id])
-    end
   end
 
   def confirm
