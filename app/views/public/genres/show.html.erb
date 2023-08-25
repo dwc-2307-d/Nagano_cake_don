@@ -1,34 +1,37 @@
 <div class="container mt-5 cake-font">
   <div class="row">
-    <div class="col-md-12">
-      <h2 class="font-weight-normal mt-3 mb-5"><%= @genre.name %> (全<%= @genre.items.count %>件)</h2>
+    <div class="col-md-2">
+      <%= render "public/items/genre", genre: @genres %>
     </div>
-    <div class="row justify-content-center">
-      <% @paginated_items.each do |item| %>
-        <div class="col-md-4 mb-4">
-          <div class="card h-100">
-            <div class="card-img-wrapper" style="height: 250px; overflow: hidden;">
-              <%= link_to item_path(item) do %>
-                <%= image_tag item.image, class: "card-img-top mx-auto", alt: item.name, style: "object-fit: cover; object-position: center; height: 100%; width: 100%;" if item.image.present? %>
-              <% end %>
-            </div>
-            <div class="card-body">
-              <h5 class="card-title text-center">
-                <%= link_to item.name, item_path(item), class: "text-dark" %>
-              </h5>
-              <p class="card-text text-center">¥<%= item.price.to_s(:delimited) %></p>
-              <% if item.is_status == true %>
-                <p class="text-success text-center mb-2">販売中</p>
-              <% else %>
-                <p class="text-danger text-center mb-2">販売停止中</p>
-              <% end %>
+    <div class="col-md-10">
+      <h2 class="font-weight-normal mt-3 mb-5"><%= @genre.name %> (全<%= @genre.items.count %>件)</h2>
+      <div class="row justify-content-center">
+        <% @paginated_items.each do |item| %>
+          <div class="col-md-4 mb-4">
+            <div class="card h-100 cafe-card">
+              <div class="card-img-wrapper" style="height: 250px; overflow: hidden;">
+                <%= link_to item_path(item) do %>
+                  <%= image_tag item.image, class: "card-img-top mx-auto", alt: item.name, style: "object-fit: cover; object-position: center; height: 100%; width: 100%;" if item.image.present? %>
+                <% end %>
+              </div>
+              <div class="card-body cafe-card-body">
+                <h5 class="card-title text-center cafe-card-title">
+                  <%= link_to item.name, item_path(item), class: "text-dark" %>
+                </h5>
+                <p class="card-text text-center cafe-card-text">¥<%= item.price.to_s(:delimited) %>円</p>
+                <% if item.is_status == true %>
+                  <p class="text-success text-center mb-2">販売中</p>
+                <% else %>
+                  <p class="text-danger text-center mb-2">販売停止中</p>
+                <% end %>
+              </div>
             </div>
           </div>
-        </div>
-      <% end %>
-    </div>
-    <div class="mt-4 text-center">
-      <%= paginate @paginated_items, :class => 'pagination' %>
+        <% end %>
+      </div>
+      <div class="mt-4 text-center">
+        <%= paginate @paginated_items, :class => 'pagination' %>
+      </div>
     </div>
   </div>
 </div>

@@ -2,7 +2,29 @@ ja:
   time:
     formats:
       default: "%Y/%m/%d %H:%M:%S"
-
+      
+  activerecord:
+    attributes:
+      genre: 
+        name: "ジャンル名"
+    errors:
+      models:
+        item:
+          attributes:
+            genre:
+              required: "ジャンルは必須です"
+            image:
+              blank: "画像は必須です"
+            name:
+              blank: "名前は必須です"
+            description:
+              blank: "説明は必須です"
+            genre_id:
+              blank: "ジャンルは必須です"
+  errors:
+    messages:
+      required: "は必須項目です"
+      blank: "を入力してください"
 
   enums:
     order:

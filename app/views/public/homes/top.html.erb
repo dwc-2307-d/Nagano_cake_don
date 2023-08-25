@@ -10,25 +10,31 @@
 </section>
 
 <section class="topic bg-light" id="topic" style="max-height: 400px; overflow: hidden;">
-  <div class="container">
-      <div class="row">
-          <div class="col-sm-7 mx-auto text-center">
-              <h3>おすすめ商品</h3>
-          </div>
+ <div class="container mt-5" id="container">
+  <div class="row">
+    <div class="col">
+      <div class="mt-5">
+        <h3><strong>新着商品</strong></h3>
+        <div class="row mt-4">
+          <ul class="slider">
+            <% @new_items.each do |item| %>
+            <li class="slide fade">
+              <%= link_to item_path(item) do %>
+                <p class="caption mx-2"><%= image_tag item.image, format: 'jpeg', size: '300x200' %></p>
+              <% end %>
+              <p class="caption"><%= item.name %></p>
+              <p class="caption">¥<%= item.with_tax_price.to_s(:delimited) %></p>
+            </li>
+            <% end %>
+          </ul>
+        </div>
+        <p class="text-center mt-5">
+          <%= link_to 'すべての商品を見る', items_path, class: "link" %>
+        </p>
       </div>
-      <div class="row mt-3">
-         <div class="col-md-4">
-          <div class="Item-card card-effect text-center">
-              <img src="<%= asset_path('') %>" alt="">
-              <div class="my-4">
-                  <h4>イチゴのショートケーキ</h4>
-                  <p>商品説明</p>
-                  <button class="btn btn-primary"> Shop</button>
-              </div>
-          </div>
-         </div>
-      </div>
+    </div>
   </div>
+</div>
 </section>
 
 
@@ -41,3 +47,21 @@
     </div>
 
 </section>
+
+<script>
+  let slideIndex = 0;
+  showSlides();
+
+  function showSlides() {
+    const slides = document.querySelectorAll(".slide.fade");
+    slideIndex++;
+    if (slideIndex > slides.length) {
+      slideIndex = 1;
+    }
+    for (let i = 0; i < slides.length; i++) {
+      slides[i].style.opacity = "0";
+    }
+    slides[slideIndex - 1].style.opacity = "1";
+    setTimeout(showSlides, 6000);
+  }
+</script>

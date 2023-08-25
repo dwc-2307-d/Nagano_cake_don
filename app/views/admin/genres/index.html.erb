@@ -1,3 +1,15 @@
+<div class="alert-space">
+  <% if @genre.errors.any? %>
+  <div class="alert alert-danger">
+    <ul>
+    <% @genre.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+    </ul>
+  </div>
+  <% end %>
+</div>
+
 <div class="genre">
   <div class='container'>
     <div class='row'>

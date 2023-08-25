@@ -1,8 +1,24 @@
 <header class="sticky-top">
   <div id="mainNavigation">
-    <nav role="navigation">
+   <nav role="navigation">
       <div class="py-3 text-center border-bottom">
-        <img src="<%= asset_path('logo2.png') %>" alt="" class="invert" width="250" height="200">
+        <!-- 検索窓用の列 -->
+        <div class="row">
+          <div class="col-md-6 offset-md-3">
+            <div class="search-container" style="text-align: right;">
+              <input id="search-box" type="text" class="search-box" name="q" placeholder="Search..." />
+              <label for="search-box"><span class="fas fa-search search-icon"></span></label>
+              <input type="submit" id="search-submit" />
+            </div>
+          </div>
+        </div>
+
+        <!-- ロゴ -->
+        <div>
+          <a href="<%= root_path %>">
+            <img src="<%= asset_path('logo2.png') %>" alt="" class="invert" width="250" height="200">
+          </a>
+        </div>
       </div>
     </nav>
     <div class="navbar-expand-md">
@@ -18,7 +34,7 @@
               <%= link_to "Home", root_path, class: "nav-link active", "aria-current" => "page" %>
             </li>
             <li class="nav-item">
-              <%= link_to "About", "#about", class: "nav-link" %>
+              <%= link_to "About", about_path, class: "nav-link" %>
             </li>
             <li class="nav-item">
               <%= link_to "items", items_path, class:"nav-link" %>
@@ -55,7 +71,7 @@
               <%= link_to "Home", root_path, class: "nav-link" %>
             </li>
             <li class="nav-item">
-              <%= link_to "About", "#about", class: "nav-link" %>
+              <%= link_to "About", about_path, class: "nav-link" %>
             </li>
             <li class="nav-item">
               <%= link_to "Items", items_path, class: "nav-link" %>
@@ -72,3 +88,7 @@
     </div>
   </div>
 </header>
+
+<script>
+  document.addEventListener("touchstart", function(){}, true);
+</script>
