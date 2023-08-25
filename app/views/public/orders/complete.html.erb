@@ -1,3 +1,10 @@
-<div class="container text-center">
-  <h1 class="mt-5">ご注文ありがとうございました！</h1>
+<div class="container text-center cafe-container cafe-background cake-font">
+  <h1 class="mt-5 cafe-title">ご注文ありがとうございました！</h1>
+  <p class="cafe-text">5秒後に商品一覧ページにリダイレクトされます。</p>
 </div>
+
+<script>
+  setTimeout(function(){
+    window.location.href = "<%= items_path %>";
+  }, 5000); 
+</script>
