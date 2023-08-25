@@ -18,8 +18,8 @@
                   <% end %>
                 </td>
                 <td><%= order.customer.full_name %></td>
-                <td><%= order.order_items.sum(:number) %></td>
-                <td><%= order.order_status_i18n %></td>
+                <td><%= order.total_amount %>円</td>
+                <td><%= t("enums.order.order_status.#{order.status}") %></td>
             </tr>
           <% end %>
       </table>

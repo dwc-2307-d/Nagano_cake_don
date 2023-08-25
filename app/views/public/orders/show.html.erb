@@ -67,7 +67,7 @@
           <td><%= order_item.item.name %></td>
           <td><%= order_item.item.with_tax_price %>円</td>
           <td><%= order_item.quantity %></td>
-          <td><%= order_item.tax_price %>円</td>
+          <td><%= order_item.tax_price * order_item.quantity %>円</td>
         </tr>
       <% end %>
     </tbody>

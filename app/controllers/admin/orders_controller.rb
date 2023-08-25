@@ -7,7 +7,7 @@ class Admin::OrdersController < ApplicationController
     @order_items = OrderItem.where(order_id: params[:id])
     @order = Order.find(params[:id])
   end
-  
+
   def update
   @order = Order.find(params[:id])
   @order_items = OrderItem.where(order_id: params[:id])
@@ -20,7 +20,7 @@ class Admin::OrdersController < ApplicationController
 
 private
   def order_params
-  params.require(:order).permit(:status)
+    params.require(:order).permit(:making_status)
   end
 
 end
