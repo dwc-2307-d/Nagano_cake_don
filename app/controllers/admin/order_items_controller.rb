@@ -2,9 +2,9 @@ class Admin::OrderItemsController < ApplicationController
   def update
     @order_item = OrderItem.find(params[:id])
     @order = @order_item.order
-    @order_item = @order.order_item
+    @order_items = @order.order_items
     @order_item.update(order_item_params)
-    @making_statuses = @order_item.pluck(:making_status)
+    @making_statuses = @order.order_items.pluck(:making_status)
     @order.update(status: "making") if @making_statuses.any?{|val| val == "making" }
     @order.update(status: "standby") if @making_statuses.all?{|val| val ==  "finish"}
 
