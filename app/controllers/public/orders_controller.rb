@@ -14,8 +14,9 @@ class Public::OrdersController < ApplicationController
   end
 
   def create
-    cart_items = current_customer.cart_items
-    @order = current_customer.orders.new(order_params)
+  cart_items = current_customer.cart_items
+  @order = current_customer.orders.new(order_params)
+
     if @order.save
       cart_items.each do |cart|
         order_item = OrderItem.new(
@@ -26,8 +27,8 @@ class Public::OrdersController < ApplicationController
         )
         order_item.save
       end
-      redirect_to complete_orders_path
       cart_items.destroy_all
+      redirect_to complete_orders_path
     else
       redirect_to new_order_path, notice: "支払い方法・配送先を選択してください。"
     end

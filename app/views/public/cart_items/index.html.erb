@@ -25,7 +25,7 @@
     <% end %>
   </tbody>
 </table>
-<%= link_to '買い物に戻る', root_path %>
+<%= link_to '買い物に戻る', items_path %>
 
 <p>合計金額: <%= number_to_currency(@cart_items.sum(&:total_price), unit: "¥", format: "%u%n", precision: 0) %></p>
 
