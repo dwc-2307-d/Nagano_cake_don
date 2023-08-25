@@ -15,9 +15,7 @@
       <% @orders.each do |order| %>
         <tr>
           <td>
-            <%= link_to admin_order_path(order), class: "text-decoration-none" do %>
-              <%= l order.created_at %>
-            <% end %>
+            <%= l order.created_at %>
           </td>
           <td>
             <%= "#{order.customer.full_name} #{order.address}" %>
@@ -30,7 +28,7 @@
           <td><%= order.total_amount %>円</td>
           <td><%= t("enums.order.order_status.#{order.status}") %></td>
           <td>
-            <%= link_to "詳細", order_path(order), class: "btn btn-primary btn-sm" %>
+            <%= link_to "詳細",order_path(order), class: "btn btn-primary btn-sm" %>
           </td>
         </tr>
       <% end %>

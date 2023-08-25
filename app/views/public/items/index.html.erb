@@ -8,17 +8,17 @@
       <div class="row justify-content-center">
         <% @items.first(6).each do |item| %>
           <div class="col-md-4 mb-4">
-            <div class="card h-100">
-              <div class="card-img-wrapper" style="height: 250px; overflow: hidden;">
+            <div class="card h-100 cafe-card">
+              <div class="cafe-card-img-wrapper" style="height: 250px;">
                 <%= link_to item_path(item) do %>
                   <%= image_tag item.image, class: "card-img-top mx-auto", alt: item.name, style: "object-fit: cover; object-position: center; height: 100%; width: 100%;" if item.image.present? %>
                 <% end %>
               </div>
-              <div class="card-body">
-                <h5 class="card-title text-center cake-font">
+              <div class="card-body cafe-card-body">
+                <h5 class="card-title text-center cafe-card-title">
                   <%= link_to item.name, item_path(item), class: "text-dark" %>
                 </h5>
-                <p class="card-text text-center">¥<%= item.with_tax_price.to_s(:delimited) %>円</p>
+                <p class="card-text text-center cafe-card-text">¥<%= item.with_tax_price.to_s(:delimited) %>円</p>
                 <% if item.is_status == true %>
                   <p class="text-success text-center mb-2">販売中</p>
                 <% else %>
@@ -35,4 +35,3 @@
     <%= paginate @items, :class => 'pagination' %>
   </div>
 </div>
-
