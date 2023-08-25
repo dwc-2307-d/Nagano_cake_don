@@ -15,7 +15,7 @@
       <% @orders.each do |order| %>
         <tr>
           <td>
-            <%= l order.created_at %>
+              <%= l order.created_at %>
           </td>
           <td>
             <%= "#{order.customer.full_name} #{order.address}" %>
