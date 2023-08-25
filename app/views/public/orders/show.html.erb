@@ -1,6 +1,7 @@
 <div class="container">
   <h2>注文履歴詳細</h2>
 
+  <h4>注文情報</h4>
   <table class="table">
     <tbody>
       <tr>
@@ -21,11 +22,36 @@
       </tr>
       <tr>
         <td>注文ステータス</td>
-        <td><%= @order.status_i18n %></td>
+        <td><%= t("enums.order.order_status.#{@order.status}") %></td>
       </tr>
     </tbody>
   </table>
 
+  <h4>請求情報</h4>
+  <table class="table">
+    <tbody>
+      <tr>
+        <td>商品合計</td>
+        <td></td>
+        <td></td>
+        <td><%= @order_items.sum { |oi| oi.tax_price * oi.quantity } %>円</td>
+      </tr>
+      <tr>
+        <td>送料</td>
+        <td></td>
+        <td></td>
+        <td>800円</td>
+      </tr>
+      <tr>
+        <td>請求金額合計</td>
+        <td></td>
+        <td></td>
+        <td><%= @order.total_amount%>円</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h4>注文内容</h4>
   <table class="table">
     <thead>
       <tr>
@@ -33,42 +59,17 @@
         <th>単価(税込)</th>
         <th>数量</th>
         <th>小計</th>
-        <th>製作ステータス</th>
       </tr>
     </thead>
     <tbody>
-      <% sum = 0 %>
       <% @order.order_items.each do |order_item| %>
         <tr>
           <td><%= order_item.item.name %></td>
           <td><%= order_item.item.with_tax_price %>円</td>
           <td><%= order_item.quantity %></td>
-          <td><%= order_item.total_price %>円</td>
-          <td><%= order_item.production_status_i18n %></td>
+          <td><%= order_item.tax_price %>円</td>
         </tr>
-        <% sum += order_item.total_price %>
       <% end %>
-      <tr>
-        <td>商品合計</td>
-        <td></td>
-        <td></td>
-        <td><%= sum %>円</td>
-        <td></td>
-      </tr>
-      <tr>
-        <td>送料</td>
-        <td></td>
-        <td></td>
-        <td>800円</td>
-        <td></td>
-      </tr>
-      <tr>
-        <td>請求金額合計</td>
-        <td></td>
-        <td></td>
-        <td><%= sum + 800 %>円</td>
-        <td></td>
-      </tr>
     </tbody>
   </table>
 </div>

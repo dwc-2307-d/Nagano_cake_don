@@ -14,50 +14,66 @@ class Public::OrdersController < ApplicationController
   end
 
   def create
-    order = Order.new(order_params)
-    order.save
-    @cart_items = current_customer.cart_items.all
-    @cart_items.each do |cart_item|
-      @order_details = OrderDetail.new
-      @order_details.order_id = order.id
-      @order_details.item_id = cart_item.item.id
-      @order_details.price = cart_item.item.price_excluding_tax
-      @order_details.number = cart_item.amount
-      @order_details.manufacture_status = 0
-      @order_details.save!
+  cart_items = current_customer.cart_items
+  @order = current_customer.orders.new(order_params)
+
+    if @order.save
+      cart_items.each do |cart|
+        order_item = OrderItem.new(
+          item_id: cart.item_id,
+          order_id: @order.id,
+          quantity: cart.quantity,
+          tax_price: cart.item.with_tax_price
+        )
+        order_item.save
+      end
+      cart_items.destroy_all
+      redirect_to complete_orders_path
+    else
+      redirect_to new_order_path, notice: "支払い方法・配送先を選択してください。"
     end
-    CartItem.destroy_all
-    redirect_to orders_completed_path
   end
 
   def index
-    @orders = Order.all.order("created_at desc")
     @orders = current_customer.orders.order("created_at desc")
     @genres = Genre.all
   end
-
+  
   def show
-      @order_items = OrderItem.where(order_id: params[:id])
-      @order = Order.find(params[:id])
+    @order = Order.find(params[:id])
+    @order_items = @order.order_items
   end
 
   def confirm
+    @customer = current_customer
+    @cart_items = @customer.cart_items
     @order = Order.new(order_params)
+    @order.post_code = @customer.post_code
+    @order.address = @customer.address
+    @order.name = @customer.full_name
+
     if params[:order][:select_address] == "0"
-      @order.post_code = current_customer.post_code
-      @order.address = current_customer.address
-      @order.name = current_customer.first_name + current_customer.last_name
+      # 自身の住所を設定する処理
+      @order.post_code = @customer.post_code
+      @order.address = @customer.address
+      @order.name = @customer.full_name
     elsif params[:order][:select_address] == "1"
-       @address = Address.find(params[:order][:address_id])
-       @order.post_code = @address.post_code
-       @order.address = @address.address
-       @order.name = @address.name
+      # 登録済み住所を設定する処理
+      @address = Address.find(params[:order][:address_id])
+      @order.post_code = @address.post_code
+      @order.address = @address.address
+      @order.name = @address.name
     elsif params[:order][:select_address] == "2"
-      @order.customer_id = current_customer.id
+      # カスタマー情報を設定する処理
+      @order.post_code = params[:order][:post_code]
+      @order.address = params[:order][:address]
+      @order.name = params[:order][:name]
     end
-      @cart_items = current_customer.cart_items
-      @order_new = Order.new
-      render :confirm
+
+    # カート内の商品を取得
+    @cart_items = current_customer.cart_items
+    @order_new = Order.new
+
   end
 
   def complete
@@ -68,7 +84,7 @@ class Public::OrdersController < ApplicationController
   private
 
   def order_params
-    params.require(:order).permit(:payment_method, :post_code, :address, :name, :postage, :amount_requested, :customer_id , :order_status)
+    params.require(:order).permit(:customer_id, :payment_method, :post_code, :address, :name, :total_amount, :shipping_fee)
   end
 
 end

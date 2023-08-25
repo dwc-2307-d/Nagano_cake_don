@@ -1,53 +1,57 @@
-<h2>注文情報入力</h2>
+<h2 class="mt-4">注文情報入力</h2>
 
-<%= form_with model: @order, local: true, class: "form" do |f| %>
+<%= form_with model: @order, url: confirm_orders_path, method: :post, local: true, class: "form" do |f| %>
 
-  <h4 class="mt-4">支払い方法</h4>
-  <div class="form-check">
-    <%= f.radio_button :payment_method, "credit_card", class: "form-check-input", id: "payment_method_credit_card" %>
-    <%= f.label :payment_method_credit_card, "クレジットカード", class: "form-check-label" %>
-  </div>
-  <div class="form-check">
-    <%= f.radio_button :payment_method, "transfer", class: "form-check-input", id: "payment_method_transfer" %>
-    <%= f.label :payment_method_transfer, "銀行振込", class: "form-check-label" %>
-  </div>
-
-  <h3 class="mt-4">お届け先</h3>
-
-  <div class="form-check">
-    <%= f.radio_button :select_address, 0, class: "form-check-input", id: "select_address_self" %>
-    <%= f.label :select_address_self, "自身の住所", class: "form-check-label" %>
-  </div>
-  <p class="mt-2"><%= current_end_user.full_address %></p>
- 
-  <h4 class="mt-4">登録済み住所</h4>
-  <div class="form-check">
-    <%= f.radio_button :select_address, 1, class: "form-check-input", id: "select_address_registered" %>
-    <%= f.label :select_address_registered, "登録済み住所", class: "form-check-label" %>
-  </div>
-  <p class="mt-2"><%= f.select :address_id, options_from_collection_for_select(@addresses, :id, :full_address), class: "form-select" %></p>
- 
-  <h4 class="mt-4">新しいお届け先</h4>
-  <div class="form-check">
-    <%= f.radio_button :select_address, 2, class: "form-check-input", id: "select_address_new" %>
-    <%= f.label :select_address_new, "新しいお届け先", class: "form-check-label" %>
+  <!-- 支払い方法 -->
+  <div class="container">
+    <h4 class="mt-4">支払い方法</h4>
+    <div class="form-check">
+      <%= f.radio_button :payment_method, "credit_card", class: "form-check-input", id: "payment_method_credit_card" %>
+      <%= f.label :payment_method_credit_card, "クレジットカード", class: "form-check-label" %>
+    </div>
+    <div class="form-check">
+      <%= f.radio_button :payment_method, "transfer", class: "form-check-input", id: "payment_method_transfer" %>
+      <%= f.label :payment_method_transfer, "銀行振込", class: "form-check-label" %>
+    </div>
   </div>
 
-  <table class="mt-4">
-    <tr>
-      <td>郵便番号</td>
-      <td><%= f.text_field :postal_code, class: "form-control" %></td>
-    </tr>
-    <tr>
-      <td>住所</td>
-      <td><%= f.text_field :address, class: "form-control" %></td>
-    </tr>
-    <tr>
-      <td>宛名</td>
-      <td><%= f.text_field :name, class: "form-control" %></td>
-    </tr>
-  </table>
+  <!-- お届け先選択 -->
+  <div class="container">
+    <h3 class="mt-4">お届け先</h3>
+    <div class="form-check">
+      <label><%= radio_button_tag :select_address, 0, class: "form-check-input", id: "select_address_self" %> 自身の住所</label>
+    </div>
+    <p class="mt-2">
+      <%= current_customer.post_code %> <%= current_customer.address %><br>
+      <%= current_customer.full_name %>
+    </p>
 
-  <%= f.submit "確認画面へ進む", class: "btn btn-primary mt-4" %>
+    <h4 class="mt-4">登録済み住所</h4>
+    <div class="form-check">
+      <label><%= radio_button_tag :select_address, 1, class: "form-check-input", id: "select_address_registered" %> 登録済みの住所</label>
+    </div>
+    <p class="mt-2"><%= f.select :address_id, options_from_collection_for_select(@addresses, :id, :full_address), class: "form-select" %></p>
 
+    <h4 class="mt-4">新しいお届け先</h4>
+    <div class="form-check">
+      <label><%= radio_button_tag :select_address, 2, class: "form-check-input", id: "select_address_new" %> 新しい住所</label>
+
+      <table class="mt-2">
+        <tr>
+          <td>郵便番号(ハイフン無し)</td>
+          <td><%= f.text_field :post_code %></td>
+        </tr>
+        <tr>
+          <td>住所</td>
+          <td><%= f.text_field :address, :size=>"60" %></td>
+        <tr>
+          <td>宛名</td>
+          <td><%= f.text_field :name %></td>
+        </tr>
+      </table>
+    </div>
+
+  <div class="text-center mt-4">
+    <%= f.submit "確認画面へ進む", class: "btn btn-primary" %>
+  </div>
 <% end %>

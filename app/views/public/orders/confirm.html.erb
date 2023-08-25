@@ -15,14 +15,14 @@
       <% @cart_items.each do |cart_item| %>
         <tr>
           <td>
-            <%= attachment_image_tag cart_item.item, :image, :fill, 100, 100, format: 'jpeg' %>
+            <%= image_tag cart_item.item.image, size: "100x100"%>
             <%= cart_item.item.name %>
           </td>
           <td><%= cart_item.item.with_tax_price %></td>
-          <td><%= cart_item.amount %></td>
-          <td><%= cart_item.subtotal %></td>
+          <td><%= cart_item.quantity %></td>
+          <td><%= cart_item.item.with_tax_price * cart_item.quantity %></td>
         </tr>
-        <% @sum += cart_item.subtotal %>
+        <% @sum += cart_item.item.with_tax_price * cart_item.quantity %>
       <% end %>
     </tbody>
   </table>
@@ -35,11 +35,11 @@
       </tr>
       <tr>
         <td>商品合計</td>
-        <td><%= @sum %></td>
+        <td><%= number_to_currency(@sum, unit: "¥", format: "%u%n", precision: 0) %></td>
       </tr>
       <tr>
         <td>請求金額</td>
-        <td><%= @sum + 800 %></td>
+        <td><%= number_to_currency(@sum + 800, unit: "¥", format: "%u%n", precision: 0) %></td>
       </tr>
     </tbody>
   </table>
@@ -53,7 +53,7 @@
       <tr>
         <th>お届け先</th>
         <td>
-          <%= @order.address %>
+          〒<%= @order.post_code %><%= @order.address %><br />
           <%= @order.name %>
         </td>
       </tr>
@@ -61,11 +61,11 @@
   </table>
 
   <%= form_with model: @order_new, url: "/orders", local: true do |f| %>
-    <%= f.hidden_field :end_user_id, value: current_end_user.id %>
+    <%= f.hidden_field :customer_id, value: current_customer.id %>
     <%= f.hidden_field :payment_method, value: @order.payment_method %>
-    <%= f.hidden_field :postage, value: 800 %>
-    <%= f.hidden_field :postal_code, value: @order.postal_code %>
-    <%= f.hidden_field :amount_requested, value: @sum + 800 %>
+    <%= f.hidden_field :shipping_fee, value: 800 %>
+    <%= f.hidden_field :post_code, value: @order.post_code %>
+    <%= f.hidden_field :total_amount, value: @sum + 800 %>
     <%= f.hidden_field :address, value: @order.address %>
     <%= f.hidden_field :name, value: @order.name %>
     <%= f.hidden_field :order_status, value: "wait_payment" %>
