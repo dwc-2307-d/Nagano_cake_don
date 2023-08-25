@@ -22,7 +22,7 @@
       </tr>
       <tr>
         <td>注文ステータス</td>
-        <td><%= t("enums.order.order_status")[@order.status] %></td>
+        <td><%= t("enums.order.order_status.#{@order.status}") %></td>
       </tr>
     </tbody>
   </table>
@@ -46,7 +46,7 @@
         <td>請求金額合計</td>
         <td></td>
         <td></td>
-        <td><%= @order.total_amount + 800 %>円</td>
+        <td><%= @order.total_amount%>円</td>
       </tr>
     </tbody>
   </table>

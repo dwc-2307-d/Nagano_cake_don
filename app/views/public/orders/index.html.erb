@@ -28,7 +28,7 @@
             <% end %>
           </td>
           <td><%= order.total_amount %>円</td>
-          <td><%= order.order_status_i18n %></td>
+          <td><%= t("enums.order.order_status.#{order.status}") %></td>
           <td>
             <%= link_to "詳細", order_path(order), class: "btn btn-primary btn-sm" %>
           </td>

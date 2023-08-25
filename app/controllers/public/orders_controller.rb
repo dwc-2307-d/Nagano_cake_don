@@ -35,11 +35,10 @@ class Public::OrdersController < ApplicationController
   end
 
   def index
-    @orders = Order.all.order("created_at desc")
     @orders = current_customer.orders.order("created_at desc")
     @genres = Genre.all
   end
-
+  
   def show
     @order = Order.find(params[:id])
     @order_items = @order.order_items
