@@ -1,20 +1,21 @@
-<div class="container">
+<div class="container cake-font">
   <div class="row mt-5">
     <div class="col-md-2">
       <%= render "genre", genre: @genres %>
     </div>
     <div class="col-md-10 d-flex">
       <div class="mr-5">
-        <%= image_tag @item.image, size: "300x200" %>
+        <%= image_tag @item.image, size: "200x200" %>
       </div>
       <div class="ml-5">
         <h5 class="mb-4"><%= @item.name %></h5>
         <h5 class="mb-3"><%= @item.description %></h5>
-        <h5 class="mb-3">¥<%= @item.with_tax_price.to_s(:delimited) %>(税込)</h5>
+        <h5 class="mb-3">¥<%= @item.with_tax_price.to_s(:delimited) %>円(税込)</h5>
         <% if customer_signed_in? %>
-          <%= form_with model: @cart_item do |f| %>
-            <%= f.select :quantity, 1..10, prompt: "個数選択" %>
-            <%= f.submit "カートに入れる", class: "btn mx-3", style: "background-color: #00ff00; color: white;" %>
+
+          <%= form_with model: @cart_item, local:true do |f| %>
+            <%= f.select :count, 1..10, selected: 1 %>
+            <%= f.submit "カートに入れる", quantity: "btn mx-3", style: "background-color: #00ff00; color: white;", data: { disable_with: "処理中..." } %
             <%= f.hidden_field :customer_id, value: current_customer.id %>
             <%= f.hidden_field :item_id, value: @item.id %>
         <% end %>
@@ -26,3 +27,6 @@
     </div>
   </div>
 </div>
+
+
+
