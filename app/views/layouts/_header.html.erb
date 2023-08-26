@@ -4,14 +4,16 @@
       <div class="py-3 text-center border-bottom">
         <!-- 検索窓用の列 -->
         <div class="row">
-          <div class="col-md-6 offset-md-3">
-            <div class="search-container" style="text-align: right;">
-              <input id="search-box" type="text" class="search-box" name="q" placeholder="Search..." />
-              <label for="search-box"><span class="fas fa-search search-icon"></span></label>
-              <input type="submit" id="search-submit" />
-            </div>
-          </div>
-        </div>
+  <div class="col-md-6 offset-md-3">
+    <%= form_for @q, url: search_items_path, method: :get do |f| %>
+      <div class="search-container" style="text-align: right;">
+        <%= f.search_field :name_cont, class: "search-box", placeholder: "Search..." %>
+        <label for="q_name_cont"><span class="fas fa-search search-icon"></span></label>
+        <input type="submit" id="search-submit" />
+      </div>
+    <% end %>
+  </div>
+</div>
 
         <!-- ロゴ -->
         <div>
