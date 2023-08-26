@@ -24,7 +24,12 @@ Rails.application.routes.draw do
     get "customers/about" => "homes/about"
     get '/customers/check' => 'customers#check'
 
-    resources :items, only: [:index, :show]
+    resources :items, only: [:index, :show] do
+      collection do
+        get :search
+      end
+     end
+
     resources :genres, only: [:show]
     resources :addresses, except: [:show]
     resources :cart_items, only: [:index, :create, :update, :destroy] do
