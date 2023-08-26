@@ -2,10 +2,10 @@ ja:
   time:
     formats:
       default: "%Y/%m/%d %H:%M:%S"
-      
+
   activerecord:
     attributes:
-      genre: 
+      genre:
         name: "ジャンル名"
     errors:
       models:

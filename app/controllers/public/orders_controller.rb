@@ -46,20 +46,20 @@ class Public::OrdersController < ApplicationController
 
   def confirm
     @order = Order.new(order_params)
-    if params[:order][:select_address] == "0"
+    if params[:select_address] == "0"
       @order.post_code = current_customer.post_code
       @order.address = current_customer.address
       @order.name = current_customer.full_name
-    elsif params[:order][:select_address] == "1"
-      @address = Address.find(params[:order][:address_id])
+    elsif params[:select_address] == "1"
+      @address = Address.find(params[:address_id])
       @order.post_code = @address.post_code
       @order.address = @address.address
       @order.name = @address.name
-    elsif params[:order][:select_address] == "2"
+    elsif params[:select_address] == "2"
       @order.customer_id = current_customer.id
     end
-    
-    
+
+
     # カート内の商品を取得
     @cart_items = current_customer.cart_items
     @order_new = Order.new
