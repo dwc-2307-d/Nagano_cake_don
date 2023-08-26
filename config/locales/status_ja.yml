@@ -6,7 +6,7 @@ ja:
       
   activerecord:
     attributes:
-      genre: 
+      genre:
         name: "ジャンル名"
     errors:
       models:

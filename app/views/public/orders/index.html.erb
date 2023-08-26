@@ -1,6 +1,6 @@
 <div class="container cake-font">
   <h2 class="elegant-header">注文履歴一覧</h2>
-  <div class="order-history-container">
+  <div class="order-history-container mb-5">
     <table class="table">
       <thead>
         <tr>
@@ -16,10 +16,10 @@
         <% @orders.each do |order| %>
           <tr>
             <td>
-                <%= l order.created_at, format: :short %> 
+                <%= l order.created_at, format: :short %>
             </td>
             <td class="delivery-address">
-              〒<%= order.customer.post_code %><br> 
+              〒<%= order.customer.post_code %><br>
               <%= order.address %><br>
               <%= order.customer.full_name %>
             </td>
