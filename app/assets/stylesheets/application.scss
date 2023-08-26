@@ -392,3 +392,48 @@ section {
 .genre-font {
   font-size: 1.2em;
 }
+
+.item-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+    margin-top: 20px;
+}
+
+.item-content h5 {
+    margin-bottom: 20px;
+}
+
+.item-content div {
+    margin-bottom: 20px;
+}
+
+
+.item-detail {
+    align-items: flex-start;
+    justify-content: flex-start; 
+}
+
+.item-image {
+    margin-right: 30px;
+}
+
+.order-history-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 30px;
+    background-color: #FFF7E3;
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.delivery-address {
+  width: 300px;
+}
+
+.order-title{
+    font-weight: bold;
+    font-size: 1.2em;  
+    margin-bottom: 10px;
+}
