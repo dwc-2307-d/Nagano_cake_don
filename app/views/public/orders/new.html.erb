@@ -18,7 +18,7 @@
     <div class="mb-4">
       <h4 class="elegant-header-no-underline">お届け先</h4>
       <div class="form-check mb-3">
-        <%= radio_button_tag :select_address, 0, class: "form-check-input", id: "select_address_self" %>
+        <%= radio_button_tag :select_address, 0, true, class: "form-check-input", id: "select_address_self" %>
         <%= label_tag :select_address_self, "自身の住所", class: "form-check-label" %>
       </div>
       <p class="mt-2 elegant-text">
@@ -27,14 +27,14 @@
       </p>
       <h4 class="mt-4 elegant-header-no-underline">登録済み住所</h4>
       <div class="form-check mb-3">
-        <%= radio_button_tag :select_address, 1, class: "form-check-input", id: "select_address_registered" %>
+        <%= radio_button_tag :select_address, 1, false, class: "form-check-input", id: "select_address_registered" %>
         <%= label_tag :select_address_registered, "登録済みの住所", class: "form-check-label" %>
       </div>
       <p class="mt-2"><%= select_tag :address_id, options_from_collection_for_select(@addresses, :id, :full_address), class: "form-select elegant-select" %></p>
 
       <h4 class="mt-4 elegant-header-no-underline">新しいお届け先</h4>
       <div class="form-check mb-3">
-        <%= radio_button_tag :select_address, 2, class: "form-check-input", id: "select_address_new" %>
+        <%= radio_button_tag :select_address, 2, false, class: "form-check-input", id: "select_address_new" %>
         <%= label_tag :select_address_new, "新しい住所", class: "form-check-label" %>
       </div>
       <table class="mt-2 elegant-table">

@@ -460,3 +460,17 @@ section {
     background-color: #FFCBA4 !important; 
     color: #5A3825 !important;
 }
+
+.white-bg {
+    background-color: #FFFFFF;
+}
+
+.center-button-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.custom-padding {
+    padding-top: 45px !important;
+}
