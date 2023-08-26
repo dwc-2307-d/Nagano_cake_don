@@ -38,7 +38,7 @@ class Public::OrdersController < ApplicationController
     @orders = current_customer.orders.order("created_at desc")
     @genres = Genre.all
   end
-  
+
   def show
     @order = Order.find(params[:id])
     @order_items = @order.order_items
@@ -69,10 +69,6 @@ class Public::OrdersController < ApplicationController
       @order.address = params[:order][:address]
       @order.name = params[:order][:name]
     end
-
-    # カート内の商品を取得
-    @cart_items = current_customer.cart_items
-    @order_new = Order.new
 
   end
 
