@@ -9,33 +9,48 @@
 </div>
 </section>
 
-<section class="topic bg-light" id="topic" style="max-height: 400px; overflow: hidden;">
- <div class="container mt-5" id="container">
-  <div class="row">
-    <div class="col">
-      <div class="mt-5">
-        <h3><strong>新着商品</strong></h3>
-        <div class="row mt-4">
-          <ul class="slider">
-            <% @new_items.each do |item| %>
-            <li class="slide fade">
-              <%= link_to item_path(item) do %>
-                <p class="caption mx-2"><%= image_tag item.image, format: 'jpeg', size: '300x200' %></p>
-              <% end %>
-              <p class="caption"><%= item.name %></p>
-              <p class="caption">¥<%= item.with_tax_price.to_s(:delimited) %></p>
-            </li>
-            <% end %>
-          </ul>
+<section class="topic bg-light" id="topic">
+  <div class="container mt-5" id="container">
+    <div class="row">
+      <div class="col">
+        <div class="mt-5 text-center">
+          <h3><strong>新着商品</strong></h3>
         </div>
-        <p class="text-center mt-5">
-          <%= link_to 'すべての商品を見る', items_path, class: "link" %>
-        </p>
+        <div class="mt-4">
+          <div class="carousel slide" data-ride="carousel">
+            <div class="carousel-inner">
+              <% @new_items.each_slice(3).with_index do |items_slice, index| %>
+                <div class="carousel-item <%= 'active' if index.zero? %>">
+                  <div class="row">
+                    <% items_slice.each do |item| %>
+                      <div class="col-md-4">
+                        <div class="item-card card-effect text-center" style="height: 90%;">
+                          <div class="d-flex flex-column h-100">
+                            <%= link_to item_path(item) do %>
+                              <%= image_tag item.image, alt: item.name, format: 'jpeg', size: '250x250', class: "img-fluid", id: "item-image-#{item.id}" %>
+                            <% end %>
+                            <div class="my-4">
+                              <h5><%= item.name %></h5>
+                              <p><%= item.description %></p>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    <% end %>
+                  </div>
+                </div>
+              <% end %>
+            </div>
+          </div>
+          <p class="text-center mt-5">
+            <%= link_to 'すべての商品を見る', items_path, class: "btn btn-secondary link" %>
+          </p>
+        </div>
       </div>
     </div>
   </div>
-</div>
 </section>
+
 
 
 <section class="about vh-100" id="about">
@@ -49,19 +64,37 @@
 </section>
 
 <script>
+  // スライドのインデックス
   let slideIndex = 0;
+
+  // 自動スライドを開始
   showSlides();
 
   function showSlides() {
-    const slides = document.querySelectorAll(".slide.fade");
+    const slides = document.querySelectorAll(".carousel-item");
+
+    // 現在のスライドを非表示にする
+    for (let i = 0; i < slides.length; i++) {
+      slides[i].style.opacity = "0";
+    }
+
+    // 次のスライドを表示
     slideIndex++;
     if (slideIndex > slides.length) {
       slideIndex = 1;
     }
-    for (let i = 0; i < slides.length; i++) {
-      slides[i].style.opacity = "0";
-    }
     slides[slideIndex - 1].style.opacity = "1";
-    setTimeout(showSlides, 6000);
+
+    // 次のスライドを指定時間後に表示
+    setTimeout(showSlides, 15000); // 6秒ごとに切り替え
   }
 </script>
+
+<style>
+.img-size {
+  width: 300px;
+  height: 200px;
+  object-fit: cover;
+}
+
+</style>
