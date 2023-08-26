@@ -38,7 +38,7 @@
                     <% if genre.items.first.present? %>
                       <%= image_tag genre.items.first.image, class: "genre-icon", alt: genre.name %>
                     <% else %>
-                      <%= image_tag "default_icon.png", class: "genre-icon", alt: "デフォルトアイコン" %>
+                      <%= image_tag "noimage.png", class: "genre-icon", alt: "デフォルトアイコン" %>
                     <% end %>
                   </div>
                 </td>
