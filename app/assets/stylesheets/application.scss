@@ -447,8 +447,8 @@ section {
 }
 
 .container .cake-btn {
-    background-color: #FFDAB9 !important; 
-    color: #5A3825 !important; 
+    background-color: #FFDAB9 !important;
+    color: #5A3825 !important;
     padding: 10px 20px !important;
     border-radius: 5px !important;
     border: none !important;
@@ -457,6 +457,67 @@ section {
 }
 
 .container .cake-btn:hover {
-    background-color: #FFCBA4 !important; 
+    background-color: #FFCBA4 !important;
     color: #5A3825 !important;
+}
+
+/* ADMIN側のCSS*/
+
+
+
+.admin-login-container {
+  justify-content: center;
+  align-items: center;
+}
+
+.admin-login-content {
+  max-width: 400px;
+  margin: 0 auto;
+  padding: 30px;
+  background-color: #fff;
+  border-radius: 10px;
+}
+
+
+/* Adminn/genre */
+.genre-icon-wrapper {
+  width: 100px;
+  height: 90px;
+  display: flex;
+  align-items: center;
+}
+
+.genre-icon {
+  max-width: 100%;
+  max-height: 100%;
+}
+
+/*Admin/genre/edit*/
+
+.genre-edit-form {
+
+  h4 {
+    margin-top: 5rem;
+  }
+
+  form {
+    margin-left: 5rem;
+
+    .form-row {
+      align-items: center;
+
+      .col-md-4 {
+        margin-bottom: 2rem;
+      }
+
+      .col-md-6 {
+        margin-bottom: 2rem;
+      }
+
+      .col-md-2 {
+        margin-top: auto;
+        margin-bottom: 2rem;
+      }
+    }
+  }
 }

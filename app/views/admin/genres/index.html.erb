@@ -10,11 +10,11 @@
   <% end %>
 </div>
 
-<div class="genre">
+<div class="genre-container">
   <div class='container'>
     <div class='row'>
       <div class='col-md-4'>
-        <h4 class="mr-5 mt-5">ジャンル一覧・追加</h4>
+        <h4 class="mr-5 mt-5">ジャンル追加</h4>
         <div class="row">
           <%= form_with model: @genre, url: admin_genres_path, method: :post do |f| %>
             <p class="genre ml-3">ジャンル名</p>
@@ -24,21 +24,29 @@
             </p>
           <% end %>
         </div>
-        <div class="genres">
-          <div class="d-flex justify-content-center">
-            <table class='table table-hover table-inverse'>
+      </div>
+      <div class='col-md-8'>
+        <div class="genre-list">
+          <h4 class="mt-5">ジャンル一覧</h4>
+          <table class='table table-hover table-inverse'>
+            <tr>
+            </tr>
+            <% @genres.each do |genre| %>
               <tr>
-                <th class="mr-5">ジャンル</th>
-                <th></th>
+                <td>
+                  <div class="genre-icon-wrapper">
+                    <% if genre.items.first.present? %>
+                      <%= image_tag genre.items.first.image, class: "genre-icon", alt: genre.name %>
+                    <% else %>
+                      <%= image_tag "default_icon.png", class: "genre-icon", alt: "デフォルトアイコン" %>
+                    <% end %>
+                  </div>
+                </td>
+                <td><%= genre.name %></td>
+                <td><%= link_to "編集する", edit_admin_genre_path(genre.id), class: "btn btn-primary" %></td>
               </tr>
-              <% @genres.each do |genre| %>
-                <tr>
-                  <td><%= genre.name %></td>
-                  <td><%= link_to "編集する", edit_admin_genre_path(genre.id), class: "btn", style: "background-color: #32cd32; color: white; mx-3" %></td>
-                </tr>
-              <% end %>
-            </table>
-          </div>
+            <% end %>
+          </table>
         </div>
       </div>
     </div>

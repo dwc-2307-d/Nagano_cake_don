@@ -13,7 +13,7 @@
 
   <body>
    <header> <%= render 'layouts/header' %></header>
-    <main>
+    <main style="min-height: 55vh;">
     <% flash.each do |message_type, message| %>
       <div class="alert alert-<%= message_type %> cake-font">
         <%= message %>
