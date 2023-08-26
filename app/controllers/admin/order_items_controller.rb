@@ -5,16 +5,18 @@ class Admin::OrderItemsController < ApplicationController
     @order_items = @order.order_items
     @order_item.update(order_item_params)
     @making_statuses = @order.order_items.pluck(:making_status)
-    @order.update(status: "making") if @making_statuses.any?{|val| val == "making" }
-    @order.update(status: "standby") if @making_statuses.all?{|val| val ==  "finish"}
+    @order.update(status: "making") if @making_statuses.any?{|val| val == "manufacturing" }
+    @order.update(status: "preparing_ship") if @making_statuses.all?{|val| val ==  "finish"}
 
-    redirect_to admin_order_path(@order)
+
 
     if @order_item.errors.any?
       flash[:alert] = "製作ステータスが更新できませんでした。"
     else
       flash[:notice] = "製作ステータスを更新しました。"
     end
+
+    redirect_to admin_order_path(@order)
   end
 
   private

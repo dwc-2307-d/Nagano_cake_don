@@ -1,28 +1,30 @@
 <div class="container cake-font elegant-bg">
-  <div class="row mt-5 elegant-box justify-content-center item-detail-container">
+  <div class="row mt-5 justify-content-center">
     <div class="col-md-3">
       <%= render "genre", genre: @genres %>
     </div>
-    <div class="col-md-9 d-flex align-items-start item-detail">
-      <div>
-        <%= image_tag @item.image, size: "250x250" %>
-      </div>
-      <div>
-        <h5 class="mb-4 elegant-header"><%= @item.name %></h5>
-        <h5 class="mb-3"><%= @item.description %></h5>
-        <h5 class="mb-3">¥<%= @item.with_tax_price.to_s(:delimited) %>円(税込)</h5>
-        <% if customer_signed_in? %>
-          <div class="d-flex align-items-center mb-3">
-            <%= form_with model: @cart_item, local: true do |f| %>
-              <%= f.select :quantity, 1..10, selected: 1, class: "mr-3" %>
-              <%= f.submit "カートに入れる", class: "elegant-btn-danger", data: { disable_with: "処理中..." } %>
-              <%= f.hidden_field :customer_id, value: current_customer.id %>
-              <%= f.hidden_field :item_id, value: @item.id %>
-            <% end %>
-          </div>
-        <% else %>
-          <p>カートに入れるには<a href="<%= new_customer_session_path %>">ログイン</a>が必要です</p>
-        <% end %>
+    <div class="col-md-9 elegant-box item-detail-container">
+      <div class="d-flex justify-content-between item-detail"> 
+        <div class="item-image" style="flex: 1; margin-right: 20px;"> 
+          <%= image_tag @item.image, size: "250x250" %>
+        </div>
+        <div class="item-details item-content text-center" style="flex: 2;">
+          <h5 class="elegant-header mb-3"><%= @item.name %></h5>
+          <h5 class="mt-1"><%= @item.description %></h5> 
+          <h5 class="mt-1">¥<%= @item.with_tax_price.to_s(:delimited) %>円(税込)</h5> 
+          <% if customer_signed_in? %>
+            <div class="d-inline-block mt-4"> 
+              <%= form_with model: @cart_item, local: true do |f| %>
+                <%= f.select :quantity, 1..10, selected: 1, class: "mr-3" %>
+                <%= f.submit "カートに入れる", class: "elegant-btn-danger", data: { disable_with: "処理中..." } %>
+                <%= f.hidden_field :customer_id, value: current_customer.id %>
+                <%= f.hidden_field :item_id, value: @item.id %>
+              <% end %>
+            </div>
+          <% else %>
+            <p class="mb-3">カートに入れるには<a href="<%= new_customer_session_path %>">ログイン</a>が必要です</p>
+          <% end %>
+        </div>
       </div>
     </div>
   </div>

@@ -58,8 +58,6 @@ class Public::OrdersController < ApplicationController
     elsif params[:select_address] == "2"
       @order.customer_id = current_customer.id
     end
-
-
     # カート内の商品を取得
     @cart_items = current_customer.cart_items
     @order_new = Order.new
