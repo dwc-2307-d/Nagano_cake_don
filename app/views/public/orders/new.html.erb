@@ -1,6 +1,8 @@
-<h2 class="mt-4">注文情報入力</h2>
+<div class="container mt-5 cake-font">
+  <h2 class="text-center elegant-header">注文情報入力</h2>
 
-<%= form_with model: @order, url: confirm_orders_path, method: :post, local: true, class: "form" do |f| %>
+  <%= form_with model: @order, url: confirm_orders_path, method: :post, local: true, class: "form mt-4" do |f| %>
+
 
   <div class="container">
     <h3 class="mt-4"><strong>支払い方法</strong></h3>
@@ -35,22 +37,29 @@
     <div class="form-check">
       <label><%= radio_button_tag :select_address, 2, class: "form-check-input", id: "select_address_new" %> 新しい住所</label>
 
-      <table class="mt-2">
+      <h4 class="mt-4 elegant-header-no-underline">新しいお届け先</h4>
+      <div class="form-check mb-3">
+        <%= radio_button_tag :select_address, 2, class: "form-check-input", id: "select_address_new" %>
+        <%= label_tag :select_address_new, "新しい住所", class: "form-check-label" %>
+      </div>
+      <table class="mt-2 elegant-table">
         <tr>
           <td>郵便番号(ハイフン無し)</td>
-          <td><%= f.text_field :post_code %></td>
+          <td><%= f.text_field :post_code, class: "form-control" %></td>
         </tr>
         <tr>
           <td>住所</td>
-          <td><%= f.text_field :address, :size=>"60" %></td>
+          <td><%= f.text_field :address, class: "form-control", size: "60" %></td>
+        </tr>
         <tr>
           <td>宛名</td>
-          <td><%= f.text_field :name %></td>
+          <td><%= f.text_field :name, class: "form-control" %></td>
         </tr>
       </table>
     </div>
 
-  <div class="text-center mt-4">
-    <%= f.submit "確認画面へ進む", class: "btn btn-primary" %>
-  </div>
-<% end %>
+    <div class="text-center mt-4">
+      <%= f.submit "確認画面へ進む", class: "btn cake-btn" %>
+    </div>
+  <% end %>
+</div>
