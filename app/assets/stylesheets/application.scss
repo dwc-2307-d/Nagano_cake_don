@@ -37,7 +37,6 @@ body {
   font-family: 'Noto Serif', serif;
   color: white;
 }
-
   /*header section */
 
 #mainNavigation a {
@@ -302,6 +301,15 @@ section {
     padding-bottom: 10px;
 }
 
+.elegant-header-no-underline {
+    font-size: 2em;
+    margin-bottom: 20px;
+    font-weight: bold;
+    letter-spacing: 1.5px;
+    padding-bottom: 10px;
+}
+
+
 .elegant-btn-danger {
     background-color: #DAB49D;
     border: none;
@@ -412,7 +420,7 @@ section {
 
 .item-detail {
     align-items: flex-start;
-    justify-content: flex-start; 
+    justify-content: flex-start;
 }
 
 .item-image {
@@ -434,6 +442,21 @@ section {
 
 .order-title{
     font-weight: bold;
-    font-size: 1.2em;  
+    font-size: 1.2em;
     margin-bottom: 10px;
+}
+
+.container .cake-btn {
+    background-color: #FFDAB9 !important; 
+    color: #5A3825 !important; 
+    padding: 10px 20px !important;
+    border-radius: 5px !important;
+    border: none !important;
+    font-weight: bold !important;
+    transition: background-color 0.3s !important;
+}
+
+.container .cake-btn:hover {
+    background-color: #FFCBA4 !important; 
+    color: #5A3825 !important;
 }
