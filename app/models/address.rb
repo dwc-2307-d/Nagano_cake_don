@@ -8,6 +8,6 @@ class Address < ApplicationRecord
 
 #配送先情報の表示
   def full_address
-    '〒' + post_code + '' + address + '' + name
+    '〒' + post_code + ' ' + address + ' ' + name
   end
 end

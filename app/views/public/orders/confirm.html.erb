@@ -53,8 +53,8 @@
     <tr>
       <th>お届け先</th>
       <td>
-        <%= @order.post_code %>
-        <%= @order.address %>
+        〒<%= @order.post_code %><br>
+        <%= @order.address %><br>
         <%= @order.name %>
       </td>
       </tr>
