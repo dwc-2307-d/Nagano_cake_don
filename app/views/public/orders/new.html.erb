@@ -28,7 +28,7 @@
     <div class="form-check">
       <label><%= radio_button_tag :select_address, 1, class: "form-check-input", id: "select_address_registered" %> 登録済みの住所</label>
     </div>
-    <p class="mt-2"><%= f.select :address_id, options_from_collection_for_select(@addresses, :id, :full_address), class: "form-select" %></p>
+    <p class="mt-2"><%= select_tag :address_id, options_from_collection_for_select(@addresses, :id, :full_address), class: "form-select" %></p>
 
     <h4 class="mt-4">新しいお届け先</h4>
     <div class="form-check">

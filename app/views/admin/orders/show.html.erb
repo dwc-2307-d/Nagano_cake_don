@@ -55,6 +55,8 @@
             <tr>
               <td><%= order_item.item.name %></td>
               <td><%= order_item.tax_price %></td>
+              <td><%= order_item.quantity %></td>
+              <td><%= order_item.tax_price * order_item.quantity %>円</td>
               <td>
                 <%= form_with model: order_item, url: admin_order_item_path(order_item), method: :patch, local: true do |f| %>
                   <%= f.select :making_status, OrderItem.making_statuses.keys.map { |status| [I18n.t("enums.order_item.making_status.#{status}"), status] }, {}, class: "form-control" %>
@@ -65,7 +67,7 @@
           <% end %>
           <tr>
             <td>商品合計</td>
-            <td><%= @order_items.sum(&:tax_price) %>円</td>
+            <td><%= @order_items.sum { |order_item| order_item.tax_price * order_item.quantity } %>円</td>
           </tr>
           <tr>
             <td>送料</td>
@@ -73,7 +75,7 @@
           </tr>
           <tr>
             <td>請求金額合計</td>
-            <td><%= @order_items.sum(&:tax_price) + 800 %>円</td>
+            <td><%= @order_items.sum { |order_item| order_item.tax_price * order_item.quantity } + 800 %>円</td>
           </tr>
         </tbody>
       </table>
