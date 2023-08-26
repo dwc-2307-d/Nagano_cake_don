@@ -5,16 +5,16 @@
 
     <div class="mb-4">
       <h4 class="elegant-header-no-underline">支払い方法</h4>
-      <div class="form-check mb-3">
+      <div class="form-check ml-3 mb-3">
         <%= f.radio_button :payment_method, "credit_card", class: "form-check-input", id: "payment_method_credit_card" %>
         <%= f.label :payment_method_credit_card, "クレジットカード", class: "form-check-label" %>
       </div>
-      <div class="form-check">
+      <div class="form-check ml-3">
         <%= f.radio_button :payment_method, "transfer", class: "form-check-input", id: "payment_method_transfer" %>
         <%= f.label :payment_method_transfer, "銀行振込", class: "form-check-label" %>
       </div>
     </div>
-  
+
     <div class="mb-4">
       <h4 class="elegant-header-no-underline">お届け先</h4>
       <div class="form-check mb-3">
@@ -30,7 +30,7 @@
         <%= radio_button_tag :select_address, 1, class: "form-check-input", id: "select_address_registered" %>
         <%= label_tag :select_address_registered, "登録済みの住所", class: "form-check-label" %>
       </div>
-      <p class="mt-2"><%= f.select :address_id, options_from_collection_for_select(@addresses, :id, :full_address), class: "form-select elegant-select" %></p>
+      <p class="mt-2"><%= select_tag :address_id, options_from_collection_for_select(@addresses, :id, :full_address), class: "form-select elegant-select" %></p>
 
       <h4 class="mt-4 elegant-header-no-underline">新しいお届け先</h4>
       <div class="form-check mb-3">
