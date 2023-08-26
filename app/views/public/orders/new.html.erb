@@ -2,7 +2,6 @@
 
 <%= form_with model: @order, url: confirm_orders_path, method: :post, local: true, class: "form" do |f| %>
 
-  <!-- 支払い方法 -->
   <div class="container">
     <h4 class="mt-4">支払い方法</h4>
     <div class="form-check">
@@ -15,7 +14,6 @@
     </div>
   </div>
 
-  <!-- お届け先選択 -->
   <div class="container">
     <h3 class="mt-4">お届け先</h3>
     <div class="form-check">
