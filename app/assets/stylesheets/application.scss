@@ -461,6 +461,7 @@ section {
     color: #5A3825 !important;
 }
 
+
 /* ADMIN側のCSS*/
 
 
@@ -520,4 +521,18 @@ section {
       }
     }
   }
+
+.white-bg {
+    background-color: #FFFFFF;
+}
+
+.center-button-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.custom-padding {
+    padding-top: 45px !important;
+
 }

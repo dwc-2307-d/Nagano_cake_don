@@ -9,6 +9,13 @@ class Public::CartItemsController < ApplicationController
 
   def create
     item = Item.find(params[:cart_item][:item_id])
+    
+    unless item.is_status
+      flash[:alert] = "選択された商品は現在販売停止中です。"
+      redirect_to request.referer
+      return
+    end
+    
     existing_cart_item = current_customer.cart_items.find_by(item: item)
   
     if existing_cart_item
@@ -26,7 +33,7 @@ class Public::CartItemsController < ApplicationController
         @genres = Genre.all
         @item = Item.find_by(id: @cart_item.item_id)
         flash.now[:alert] = '※個数を選択してください'
-        render 'items/show'
+        render "items/show"
       end
     end
   end
