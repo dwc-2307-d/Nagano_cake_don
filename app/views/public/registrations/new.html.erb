@@ -1,7 +1,7 @@
-<div class="container">
+<div class="container elegant-bg cake-font">
   <div class="row">
     <div class="col">
-      <h2 class="my-4">新規会員登録</h2>
+      <h2 class="my-4 elegant-header">新規会員登録</h2>
 
       <%= form_with model: @customer, url: customer_registration_path do |f| %>
         <%= render "public/shared/error_messages", resource: resource %>
@@ -20,7 +20,7 @@
 
           <tr>
             <td>メールアドレス</td>
-            <td><%= f.text_field :email, placeholder: "sample@example.com" %></td>
+            <td><%= f.text_field :email, placeholder: "sample@example.com", class: "wide-text-field" %></td>
           </tr>
 
           <tr>
@@ -30,7 +30,7 @@
 
           <tr>
             <td>住所</td>
-            <td><%= f.text_field :address, placeholder: "東京都渋谷区代々木神園町0-0" %></td>
+            <td><%= f.text_field :address, placeholder: "東京都渋谷区代々木神園町0-0", class: "wide-text-field" %></td>
           </tr>
 
           <tr>
@@ -58,8 +58,10 @@
           </t>
         </table>
 
-        <h4>既に登録済みの方</h4>
-        <%= render "public/shared/links" %>からログインしてください。
+        <h4 class="elegant-header-no-underline">既に登録済みの方</h4>
+        <p class="center-button-container custom-padding">
+          <%= link_to "こちら", new_customer_session_path, class: "elegant-link, style: text-decoration: underline; color: blue;" %>からログインしてください。
+        </p>
       <% end %>
     </div>
   </div>
