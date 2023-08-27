@@ -1,6 +1,19 @@
-<h4 class="ml-5 my-5"><span style="background-color: #d3d3d3; padding-left: 10px; padding-right: 10px;">ジャンル編集</span></h4>
-<%= form_with model: @genre, url: admin_genre_path,method: :patch do |f| %>
-  <td><%= f.label :ジャンル名, class: "mr-3 genreedit" %></td>
-  <td><%= f.text_field :name, class: "mr-2" %></td>
-  <td><%= f.submit "変更を保存", class: "btn", style: "background-color: #64CCC5; color: white; mx-3 mb-5" %></td>
-<% end %>
+<div class="container d-flex justify-content-center align-items-center">
+  <div class="genre-edit-form ml-5">
+    <h4 class="my-5 text-center elegant-header">ジャンル編集</h4>
+
+    <%= form_with model: @genre, url: admin_genre_path, method: :patch, class: "ml-5" do |f| %>
+      <div class="form-row align-items-center">
+        <div class="col-md-4 mb-2">
+          <%= f.label :ジャンル名, class: "mr-2" %>
+        </div>
+        <div class="col-md-6 mb-2">
+          <%= f.text_field :name, class: "form-control" %>
+        </div>
+        <div class="col-md-2">
+          <%= f.submit "変更を保存", class: "btn btn-primary" %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
