@@ -175,7 +175,6 @@ section {
   box-shadow: var(--box-shadow);
 }
 
-
 /*about section*/
 
 .about {
@@ -251,6 +250,29 @@ section {
 
 .field_with_errors {
   display: contents;
+}
+
+.about-genre-table {
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
+  color: rgba(255, 255, 255, 0.9) !important;
+  background: none;
+  border-collapse: separate;
+  border-spacing: 0 15px;
+}
+
+.about-genre-table th, .about-genre-table td {
+  padding: 15px;
+  background: none;
+  border: none;
+}
+
+.about-genre-table th {
+  font-weight: bold;
+  letter-spacing: 1.2px;
+}
+
+.about-genre-table td {
+  font-size: 1.1em;
 }
 
 /* kaminari用のCSS */
@@ -461,7 +483,6 @@ section {
     color: #5A3825 !important;
 }
 
-
 /* ADMIN側のCSS*/
 
 
@@ -521,20 +542,6 @@ section {
       }
     }
   }
-
-.white-bg {
-    background-color: #FFFFFF;
-}
-
-.center-button-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.custom-padding {
-    padding-top: 45px !important;
-
 }
 
 .wide-text-field {

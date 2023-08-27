@@ -53,15 +53,26 @@
 
 
 
-<section class="about vh-100" id="about">
+<section class="about vh-100 d-flex align-items-center" id="about">
+  <div class="container">
     <div class="row">
-        <div class="about-info col-md-9">
-            <h2>About</h2>
-            <h3>Nagano Cakeは全国発送可能なケーキ屋さんです。<br>お子様からお年寄りの方までお召し上がりいただけるよう、様々なバリエーションを用意しております。<br>また、全国に発送可能ですので「いつ」でも「どこ」でもご注文いただけます。ぜひご注文ください。</h3>
-        </div>
+      <div class="col-md-5"></div>
+      <div class="col-md-5">
+        <table class="table about-genre-table">
+          <thead>
+            <tr><th class="pl-3 pr-10 genre-font">Genres</th></tr>
+          </thead>
+          <tbody>
+            <% @genres.each do |genre| %>
+              <tr><td><%= link_to genre.name, genre_path(genre), class: "link elegant-link" %></td></tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
     </div>
-
+  </div>
 </section>
+
 
 <script>
   // スライドのインデックス
@@ -97,4 +108,9 @@
   object-fit: cover;
 }
 
+  .about-genre-table th,
+  .about-genre-table td,
+  .link.elegant-link {
+    color: white;
+  }
 </style>
