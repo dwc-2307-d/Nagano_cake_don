@@ -1,29 +1,26 @@
-<div class="container">
+<div class="container cake-font">
   <div class="row">
     <div class="col">
-      <h2>ログイン</h2>
-      <h4>会員の方はこちらからログイン</h4>
-      
+      <h2 class="elegant-header">ログイン</h2>
+      <h4 class="elegant-header-no-underline">会員の方はこちらからログイン</h4>
       <%= form_with model: @customer, url: session_path(resource_name) do |f| %>
-        <table class="table table-borderless">
+        <table class="table">
           <tr>
-            <td><%= f.label :email, "メールアドレス" %></td>
+            <td><%= f.label :email, "メールアドレス", class: "genre-font" %></td>
             <td><%= f.email_field :email, autofocus: true, autocomplete: "email", class:"form-control" %></td>
           </tr>
           <tr>
-            <td><%= f.label :password, "パスワード" %></td>
+            <td><%= f.label :password, "パスワード", class: "genre-font" %></td>
             <td><%= f.password_field :password, autocomplete: "current-password", class:"form-control" %></td>            
           </tr>
           <tr>
             <td></td>
-            <td><%= f.submit "ログイン", class:"btn", style: "background-color: #9AC5F4; color: white" %></td>
+            <td><%= f.submit "ログイン", class:"btn cake-btn" %></td>
           </tr>
         </table>
-        <% end %>
-      
-      <h4>会員登録がお済みでない方</h4>
-      <%= render "public/shared/links" %>から新規登録を行ってください。
-    
+      <% end %>
+      <h4 class="elegant-header-no-underline">会員登録がお済みでない方</h4>
+      <p><%= link_to "こちら", new_customer_registration_path, class: "elegant-link, style: text-decoration: underline; color: blue;" %>から新規登録を行ってください。</p>
     </div>
   </div>
 </div>
