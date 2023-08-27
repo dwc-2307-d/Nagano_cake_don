@@ -1,0 +1,54 @@
+<div class="alert-space">
+  <% if @genre.errors.any? %>
+  <div class="alert alert-danger">
+    <ul>
+    <% @genre.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+    </ul>
+  </div>
+  <% end %>
+</div>
+
+<div class="genre-container">
+  <div class='container'>
+    <div class='row'>
+      <div class='col-md-4'>
+        <h4 class="mr-5 mt-5">ジャンル追加</h4>
+        <div class="row">
+          <%= form_with model: @genre, url: admin_genres_path, method: :post do |f| %>
+            <p class="genre ml-3">ジャンル名</p>
+            <p class="ml-3">
+              <%= f.text_field :name %>
+              <%= f.submit '新規登録', class: "btn", style: "background-color: #32cd32; color: white; mx-3" %>
+            </p>
+          <% end %>
+        </div>
+      </div>
+      <div class='col-md-8'>
+        <div class="genre-list">
+          <h4 class="mt-5">ジャンル一覧</h4>
+          <table class='table table-hover table-inverse'>
+            <tr>
+            </tr>
+            <% @genres.each do |genre| %>
+              <tr>
+                <td>
+                  <div class="genre-icon-wrapper">
+                    <% if genre.items.first.present? %>
+                      <%= image_tag genre.items.first.image, class: "genre-icon", alt: genre.name %>
+                    <% else %>
+                      <%= image_tag "noimage.png", class: "genre-icon", alt: "デフォルトアイコン" %>
+                    <% end %>
+                  </div>
+                </td>
+                <td><%= genre.name %></td>
+                <td><%= link_to "編集する", edit_admin_genre_path(genre.id), class: "btn btn-primary" %></td>
+              </tr>
+            <% end %>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

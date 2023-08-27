@@ -1,0 +1,28 @@
+<div class="admin-login-container container d-flex justify-content-center align-items-center">
+  <div class="row justify-content-center">
+    <div class="col admin-login-content">
+      <h4 class="my-5 text-center">管理者ログイン</h4>
+
+      <%= form_with model: @admin, url: admin_session_path do |f| %>
+        <div class="table-responsive">
+          <table class="table table-borderless">
+            <tr>
+              <td><%= f.label :email, "メールアドレス" %></td>
+              <td><%= f.email_field :email, autofocus: true, autocomplete: "email" %></td>
+            </tr>
+            <tr>
+              <td><%= f.label :password, "パスワード" %></td>
+              <td><%= f.password_field :password, autocomplete: "current-password" %></td>
+            </tr>
+            <tr>
+              <td></td>
+              <td><%= f.submit "ログイン", class: "btn", style: "background-color: #9AC5F4; color: white" %></td>
+            </tr>
+          </table>
+        </div>
+      <% end %>
+
+      <%= render "admin/shared/links" %>
+    </div>
+  </div>
+</div>

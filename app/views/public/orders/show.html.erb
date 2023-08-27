@@ -1,0 +1,83 @@
+<div class="container cake-font">
+  <h2 class="mb-4">注文履歴詳細</h2>
+
+  <div class="row">
+    <div class="col-md-6">
+      <h4 class="mb-3">注文情報</h4>
+      <table class="table">
+        <tbody>
+          <tr>
+            <td class="order-title">購入者</td>
+            <td><%= @order.customer.full_name %></td>
+          </tr>
+          <tr>
+            <td class="order-title">注文日</td>
+            <td><%= l @order.created_at %></td>
+          </tr>
+          <tr>
+            <td class="order-title">配送先</td>
+           <td>
+             〒<%= @order.post_code %><br>
+               <%= @order.address %><br>
+               <%= @order.name %>
+           </td>
+          </tr>
+          <tr>
+            <td class="order-title">支払い方法</td>
+            <td><%= @order.payment_method_i18n %></td>
+          </tr>
+          <tr>
+            <td class="order-title">注文ステータス</td>
+            <td><%= t("enums.order.order_status.#{@order.status}") %></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="col-md-6">
+      <h4 class="mb-3">請求情報</h4>
+      <table class="table">
+        <tbody>
+          <tr>
+            <td class="order-title">商品合計</td>
+            <td></td>
+            <td></td>
+            <td><%= @order_items.sum { |oi| oi.tax_price * oi.quantity }.to_s(:delimited) %>円</td>
+          </tr>
+          <tr>
+            <td class="order-title">送料</td>
+            <td></td>
+            <td></td>
+            <td>800円</td>
+          </tr>
+          <tr>
+            <td class="order-title">請求金額合計</td>
+            <td></td>
+            <td></td>
+            <td><%= @order.total_amount.to_s(:delimited) %>円</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <h4 class="mt-5 mb-3">注文内容</h4>
+  <table class="table">
+    <thead>
+      <tr>
+        <th class="order-title">商品名</th>
+        <th class="order-title">単価(税込)</th>
+        <th class="order-title">数量</th>
+        <th class="order-title">小計</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @order.order_items.each do |order_item| %>
+        <tr>
+          <td><%= order_item.item.name %></td>
+          <td><%= order_item.item.with_tax_price.to_s(:delimited) %>円</td>
+          <td><%= order_item.quantity %></td>
+          <td><%= (order_item.tax_price * order_item.quantity).to_s(:delimited) %>円</td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

@@ -1,0 +1,45 @@
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <h4 class="mt-5">商品一覧</h4>
+        <div class="text-right">
+          <%= link_to "+", new_admin_item_path, class: "btn rounded-circle custom-plus-button mt-2 mb-2",
+          style: "background-color: #808080; color:white;" %>
+        </div>
+        <div class="index">
+          <table class="table">
+            <thead>
+              <tr>
+                <th>商品ID</th>
+                <th>商品名</th>
+                <th>税抜価格</th>
+                <th>ジャンル</th>
+                <th>ステータス</th>
+              </tr>
+            </thead>
+            <tbody>
+              <% @items.each do |item| %>
+              <tr>
+                <td><%= item.id %></td>
+                <td><%= link_to admin_item_path(item.id),class: "link" do %>
+                 <u><%= item.name %></u>
+                    <% end %>
+                </td>
+                <td><%= item.price.to_s(:delimited) %></td>
+                <td><%= item.genre.name %></td>
+                <td>
+                  <% if item.is_status == true %>
+                  <strong style="color:#00ff00;"><%= "販売中" %></strong>
+                  <% else %>
+                  <span style="color:#a9a9a9;"><%= "停止中" %></span>
+                  <% end %>
+                </td>
+              </tr>
+            <% end %>
+            </tbody>
+          </table>
+        </div>
+    </div>
+  </div>
+</div>
+<%= paginate @items %>

@@ -1,0 +1,549 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ */
+
+@import "bootstrap";
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+JP&display=swap');
+:root {
+  --box-shadow: 0 8px 22px rgba(0,0,0,0.2)
+}
+
+* {
+  transition: all 0.4s ease;
+}
+
+@font-face {
+  font-family: 'HannariMincho';
+  src: font-url('HannariMincho-Regular.otf') format('truetype');
+}
+
+
+@font-face {
+  font-family: 'KomorebiGothic';
+  src: font-url('komorebi-gothic.ttf') format('truetype');
+}
+
+
+body {
+  font-family: 'Noto Serif', serif;
+  color: white;
+}
+  /*header section */
+
+#mainNavigation a {
+  font-family: 'Cabin', sans-serif;
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.4);
+}
+
+.nav-item a {
+  color: #dfdfdf;
+}
+
+.nav-item a:hover {
+  color: #fff;
+}
+
+.nav-item {
+  min-width: 12vw;
+}
+
+#mainNavigation {
+  /*position: fixed; */
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 123;
+  padding-bottom: 30px;
+  /* 白グラデーションテンプレ */
+  /*background: linear-gradient(to bottom, rgba(255, 255, 255, 0.65) 0%, rgba(255, 255, 255, 0) 100%); */
+}
+
+$tl: 0.6s; // transition length
+
+
+body {
+  margin: 5%;
+}
+
+.search-box {
+  transition: width $tl, border-radius $tl, background $tl, box-shadow $tl;
+  width: 40px;height: 40px;
+  border-radius: 20px;border: none;
+  cursor: pointer;
+  background: rgb(235, 235, 235);
+  & + label .search-icon {    color: black    }
+  &:hover {
+    color: white;
+    background: rgb(200, 200, 200);
+    box-shadow: 0 0 0 5px rgb(61, 71, 82);
+    & + label .search-icon {    color: white    }
+  }
+  &:focus {
+    transition: width $tl cubic-bezier(0,1.22,.66,1.39), border-radius $tl, background $tl;
+    border: none;outline: none;
+    box-shadow: none;
+    padding-left: 15px;
+    cursor: text;
+    width: 300px;
+    border-radius: auto;
+    background: rgb(235, 235, 235);
+    color: black;
+    & + label .search-icon {    color: black;    }
+  }
+  &:not(:focus) {    text-indent:-5000px;    } // for more-graceful falling back (:not browsers likely support indent)
+}
+
+#search-submit {
+  position: relative;left: -5000px;
+}
+
+.search-icon {
+  position: relative;
+  left: -30px;
+  color: white;
+  cursor: pointer;
+}
+
+
+#navbarNavDropdown.collapsing .navbar-nav,
+#navbarNavDropdown.show .navbar-nav {
+
+  padding: 12px;
+}
+
+
+
+footer {
+/*  position: fixed; */
+  margin-top: auto;
+  bottom: 0;
+  width: 100%;
+}
+
+section {
+  padding-top: 60px;
+  padding-bottom: 60px;
+}
+
+/* top_page section */
+
+.top_page {
+  background-image: url("top_bg1.jpg");
+  background-position: center;
+  background-size: cover;
+  background-attachment: fixed;
+
+}
+
+.top_page .title {
+  transform: translateY(280px) translateX(520px);
+  font-family: 'Noto Serif JP', serif;
+  color: rgba(255, 255, 255, 0.9);
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
+}
+
+.top_page .h1 {
+  text-shadow: black ;
+  font-size: 3rem;
+}
+
+/*Topic section*/
+
+.topic {
+  font-family: 'Noto Serif JP', serif;
+}
+
+.topic img {
+  width: 300px;
+  height: 200px;
+  object-fit: cover;
+}
+
+.card-effect {
+  box-shadow: var(--box-shadow);
+}
+
+/*about section*/
+
+.about {
+  font-family: 'Noto Serif JP', serif;
+  background-image: url("/assets/top_bg2.jpg");
+  background-position: center;
+  background-size: cover;
+  background-attachment: fixed;
+  position: relative;
+  color: rgba(255, 255, 255, 0.9);
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
+}
+
+.about-info {
+  transform: translateY(50%) translateX(10%);
+  padding-left: 20px;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
+}
+
+.about-info h3 {
+  font-size: 1.5rem;
+}
+
+
+.about_page {
+  position: relative;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.background_image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url("/assets/about_bg.jpg");
+  background-position: center;
+  background-size: cover;
+  background-attachment: fixed;
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 50%;
+  background-color: rgba(0, 0, 0, 0.5); /* グレーオーバーレイ */
+}
+
+.about_text {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 50%;
+  padding: 20px;
+  color: rgba(255, 255, 255, 0.9);
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
+}
+
+.about_text h1 {
+  font-family: 'Noto Serif JP', serif;
+  font-size: 2rem;
+  margin: 0;
+}
+
+.about_text h2 {
+  font-family: 'Noto Serif JP', serif;
+  font-size: 1.5rem;
+  margin-top: 20px;
+}
+
+.field_with_errors {
+  display: contents;
+}
+
+.about-genre-table {
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
+  color: rgba(255, 255, 255, 0.9) !important;
+  background: none;
+  border-collapse: separate;
+  border-spacing: 0 15px;
+}
+
+.about-genre-table th, .about-genre-table td {
+  padding: 15px;
+  background: none;
+  border: none;
+}
+
+.about-genre-table th {
+  font-weight: bold;
+  letter-spacing: 1.2px;
+}
+
+.about-genre-table td {
+  font-size: 1.1em;
+}
+
+/* kaminari用のCSS */
+
+.pagination {
+  justify-content: center;
+}
+.pagination>li>a {
+  border: none;
+  color: #696969;
+}
+
+.pagination>.active>a {
+  background: #93c9ff;
+  border-radius: 15px;
+}
+
+.pagination>li>a:hover {
+  border-radius: 15px;
+}
+
+/* ビューページ用のCSS */
+.cake-font {
+   font-family: 'HannariMincho', sans-serif;
+}
+
+.elegant-bg {
+    background-color: #FFFFFF;
+    color: #5A3825;
+    padding: 40px 0;
+}
+
+.elegant-box {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 30px;
+    background-color: #FFF7E3;
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.elegant-header {
+    font-size: 2em;
+    margin-bottom: 20px;
+    font-weight: bold;
+    letter-spacing: 1.5px;
+    border-bottom: 2px solid #5A3825;
+    padding-bottom: 10px;
+}
+
+.elegant-header-no-underline {
+    font-size: 2em;
+    margin-bottom: 20px;
+    font-weight: bold;
+    letter-spacing: 1.5px;
+    padding-bottom: 10px;
+}
+
+
+.elegant-btn-danger {
+    background-color: #DAB49D;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    color: white;
+    transition: background-color 0.3s;
+}
+
+.elegant-btn-danger:hover {
+    background-color: #C79A85;
+}
+
+.elegant-table {
+    margin-top: 20px;
+    border-collapse: separate;
+    border-spacing: 0 15px;
+}
+
+.elegant-table th, .elegant-table td {
+    padding: 15px;
+    background-color: #FFFAF6;
+    border: none;
+}
+
+.elegant-table th {
+    font-weight: bold;
+    letter-spacing: 1.2px;
+}
+
+.elegant-table td {
+    font-size: 1.1em;
+}
+
+.cafe-card {
+    background-color: #F5E9D8;
+    border: none;
+    transition: transform 0.3s;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.cafe-card:hover {
+    transform: scale(1.05);
+}
+
+.cafe-card-img-wrapper {
+    overflow: hidden;
+    border-radius: 15px;
+}
+
+.cafe-card-title {
+    font-size: 1.2em;
+    color: #5D4037;
+}
+
+.cafe-card-text {
+    color: #5D4037;
+}
+
+.cafe-card-body {
+    background-color: #FDF6ED;
+    border-radius: 0 0 15px 15px;
+    padding: 20px;
+}
+
+
+.item-detail-container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.item-detail {
+    justify-content: space-around;
+    align-items: flex-start;
+}
+
+.elegant-link {
+    color: #5A3825;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.elegant-link:hover {
+    color: #DAB49D;
+}
+
+.genre-font {
+  font-size: 1.2em;
+}
+
+.item-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+    margin-top: 20px;
+}
+
+.item-content h5 {
+    margin-bottom: 20px;
+}
+
+.item-content div {
+    margin-bottom: 20px;
+}
+
+
+.item-detail {
+    align-items: flex-start;
+    justify-content: flex-start;
+}
+
+.item-image {
+    margin-right: 30px;
+}
+
+.order-history-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 30px;
+    background-color: #FFF7E3;
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.delivery-address {
+  width: 300px;
+}
+
+.order-title{
+    font-weight: bold;
+    font-size: 1.2em;
+    margin-bottom: 10px;
+}
+
+.container .cake-btn {
+    background-color: #FFDAB9 !important;
+    color: #5A3825 !important;
+    padding: 10px 20px !important;
+    border-radius: 5px !important;
+    border: none !important;
+    font-weight: bold !important;
+    transition: background-color 0.3s !important;
+}
+
+.container .cake-btn:hover {
+    background-color: #FFCBA4 !important;
+    color: #5A3825 !important;
+}
+
+/* ADMIN側のCSS*/
+
+
+
+.admin-login-container {
+  justify-content: center;
+  align-items: center;
+}
+
+.admin-login-content {
+  max-width: 400px;
+  margin: 0 auto;
+  padding: 30px;
+  background-color: #fff;
+  border-radius: 10px;
+}
+
+
+/* Adminn/genre */
+.genre-icon-wrapper {
+  width: 100px;
+  height: 90px;
+  display: flex;
+  align-items: center;
+}
+
+.genre-icon {
+  max-width: 100%;
+  max-height: 100%;
+}
+
+/*Admin/genre/edit*/
+
+.genre-edit-form {
+
+  h4 {
+    margin-top: 5rem;
+  }
+
+  form {
+    margin-left: 5rem;
+
+    .form-row {
+      align-items: center;
+
+      .col-md-4 {
+        margin-bottom: 2rem;
+      }
+
+      .col-md-6 {
+        margin-bottom: 2rem;
+      }
+
+      .col-md-2 {
+        margin-top: auto;
+        margin-bottom: 2rem;
+      }
+    }
+  }
+}
+
+.wide-text-field {
+    width: 50%;
+}

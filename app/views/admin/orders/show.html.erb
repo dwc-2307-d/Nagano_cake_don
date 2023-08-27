@@ -1,0 +1,84 @@
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <h4 class="my-5 admin-order-list">注文履歴詳細</h4>
+
+      <%= form_with model: @order, url: admin_order_path(@order), method: :patch, local: true do |f| %>
+        <table class="table">
+          <tr>
+            <td>購入者</td>
+            <td>
+              <%= link_to admin_customer_path(@order.customer), class: "link" do %>
+                <%= @order.customer.full_name %></td>
+              <% end %>
+          </tr>
+
+          <tr>
+            <td>注文日</td>
+            <td><%= l @order.created_at %></td>
+          </tr>
+
+          <tr>
+            <td>配送先</td>
+            <td><%= @order.post_code%>
+                <%= @order.address %>
+                <%= @order.name %></td>
+          </tr>
+
+          <tr>
+            <td>支払い方法</td>
+            <td><%= @order.payment_method_i18n%></td>
+          </tr>
+
+          <tr>
+            <td>注文ステータス</td>
+            <td>
+              <%= f.select :status, Order.statuses_i18n, {}, class: "form-control col-3" %>
+              <%= f.submit '更新', class:"btn col-3", style: "background-color: #64CCC5; color: white;" %>
+            </td>
+          </tr>
+        </table>
+      <% end %>
+
+      <table class="table">
+        <thead>
+          <tr>
+            <th>商品名</th>
+            <th>単価(税込)</th>
+            <th>数量</th>
+            <th>小計</th>
+            <th>製作ステータス</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @order_items.each do |order_item| %>
+            <tr>
+              <td><%= order_item.item.name %></td>
+              <td><%= order_item.tax_price %></td>
+              <td><%= order_item.quantity %></td>
+              <td><%= order_item.tax_price * order_item.quantity %>円</td>
+              <td>
+                <%= form_with model: order_item, url: admin_order_item_path(order_item), method: :patch, local: true do |f| %>
+                  <%= f.select :making_status, OrderItem.making_statuses.keys.map { |status| [I18n.t("enums.order_item.making_status.#{status}"), status] }, {}, class: "form-control" %>
+                  <%= f.submit "更新", class: "btn btn-success" %>
+                <% end %>
+              </td>
+            </tr>
+          <% end %>
+          <tr>
+            <td>商品合計</td>
+            <td><%= @order_items.sum { |order_item| order_item.tax_price * order_item.quantity } %>円</td>
+          </tr>
+          <tr>
+            <td>送料</td>
+            <td>800円</td>
+          </tr>
+          <tr>
+            <td>請求金額合計</td>
+            <td><%= @order_items.sum { |order_item| order_item.tax_price * order_item.quantity } + 800 %>円</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,121 @@
+<section class="top_page vh-100 d-flex allin-items-center">
+<div class="container">
+  <div class="row">
+      <div class="title col-md-8">
+          <h1>Naganocake</h1>
+          <h2>NaganoCakeは、ケーキ販売のECサイトです。<br>会員でない方も商品の閲覧は可能ですが、<br>購入には会員登録が必要になります。</h2>
+      </div>
+  </div>
+</div>
+</section>
+
+<section class="topic bg-light" id="topic">
+  <div class="container mt-5" id="container">
+    <div class="row">
+      <div class="col">
+        <div class="mt-5 text-center">
+          <h3><strong>新着商品</strong></h3>
+        </div>
+        <div class="mt-4">
+          <div class="carousel slide" data-ride="carousel">
+            <div class="carousel-inner">
+              <% @new_items.each_slice(3).with_index do |items_slice, index| %>
+                <div class="carousel-item <%= 'active' if index.zero? %>">
+                  <div class="row">
+                    <% items_slice.each do |item| %>
+                      <div class="col-md-4">
+                        <div class="item-card card-effect text-center" style="height: 90%;">
+                          <div class="d-flex flex-column h-100">
+                            <%= link_to item_path(item) do %>
+                              <%= image_tag item.image, alt: item.name, format: 'jpeg', size: '250x250', class: "img-fluid", id: "item-image-#{item.id}" %>
+                            <% end %>
+                            <div class="my-4">
+                              <h5><%= item.name %></h5>
+                              <p><%= item.description %></p>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    <% end %>
+                  </div>
+                </div>
+              <% end %>
+            </div>
+          </div>
+          <p class="text-center mt-5">
+            <%= link_to 'すべての商品を見る', items_path, class: "btn btn-secondary link" %>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+<section class="about vh-100 d-flex align-items-center" id="about">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-9">
+        <table class="table about-genre-table">
+          <thead>
+            <tr><th class="pl-3 pr-10 genre-font">Genres</th></tr>
+          </thead>
+          <tbody>
+            <% @genres.each do |genre| %>
+              <tr><td><%= link_to genre.name, genre_path(genre), class: "link elegant-link" %></td></tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<script>
+  // スライドのインデックス
+  let slideIndex = 0;
+
+  // 自動スライドを開始
+  showSlides();
+
+  function showSlides() {
+    const slides = document.querySelectorAll(".carousel-item");
+
+    // 現在のスライドを非表示にする
+    for (let i = 0; i < slides.length; i++) {
+      slides[i].style.opacity = "0";
+    }
+
+    // 次のスライドを表示
+    slideIndex++;
+    if (slideIndex > slides.length) {
+      slideIndex = 1;
+    }
+    slides[slideIndex - 1].style.opacity = "1";
+
+    // 次のスライドを指定時間後に表示
+    setTimeout(showSlides, 10000); // 6秒ごとに切り替え
+  }
+</script>
+
+<style>
+.img-size {
+  width: 300px;
+  height: 200px;
+  object-fit: cover;
+}
+
+  .about-genre-table th,
+  .about-genre-table td,
+  .link.elegant-link {
+    color: white;
+  }
+
+.about-genre-table {
+  width: 35%; /* 右半分に配置するために幅を50%に設定 */
+  margin-left: auto; /* 左側の余白を自動的に調整 */
+  padding-left: 20px; /* 必要に応じて余白を調整 */
+}
+</style>
